@@ -116,3 +116,15 @@ Para "pontos no mapa" (CRAS, Centros POP), a distribuição é ilustrativa por e
 ## Fotos
 
 Guarde as fotos em `public/fotos/` e registre cada uma em `CREDITOS.txt` (arquivo, autor, licença, fonte). Mostre com Polaroide (P&B por padrão).
+
+## Tema claro e série em partes (aprendido em Eleições, 30/09/2026)
+
+- **Tema claro/clean:** quando o roteiro pede outra identidade visual, troque `tema.ts`, `Quadro.tsx` (papel com grade leve em vez de cortiça), `Legenda` (caixa tinta com texto branco), `Contador`, `Etiqueta`, `Documento` e `ChamadaInscricao`.
+  - Modelo pronto em `references/producao-exemplos/tema-claro-eleicoes/`. Nele, `tema.ts` mantém as chaves antigas de `cores`/`fontes` (compatibilidade) e acrescenta a paleta `c` e a `sombra`.
+  - Crie um `Kit<TEMA>.tsx` com os elementos [NOVO] e uma composição `Vitrine` para conferir o kit em imagem antes de escrever os blocos.
+- **Série em 2 partes:** um projeto por parte (`<tema>-parte1`, `<tema>-parte2`), cada um com uma cópia do roteiro.
+  - Mantenha a numeração original dos blocos (a abertura da parte 2 vira `B0`; o fecho da parte 1 vira o bloco seguinte ao último).
+  - O `gerar-dados.mjs` aceita qualquer numeração.
+  - Para não gastar disco, clone as dependências de outro projeto com `cp -cR <outro>/video/node_modules <novo>/video/` (clone APFS, sem espaço extra).
+- **Chamadas com frase própria:** gere `public/audio/cta1..3.mp3` com as frases do roteiro. No Root: `auditado(comChamada(BlocoNN, DURACAO_NN, "depois", "audio/cta2.mp3", duracaoChamada(seg)))` e `durationInFrames={DURACAO_NN + duracaoChamada(seg)}`.
+- **Trabalho em paralelo:** com a base pronta (tema, kit, Root com todos os blocos em esqueleto), dá para dividir os blocos entre agentes com um briefing único (modelo: `projetos/eleicoes/BRIEF-PRODUCAO.md`). Cada agente só edita os próprios `BlocoNN.tsx` e roda a auditoria de um bloco por vez.

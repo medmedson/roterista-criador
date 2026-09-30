@@ -26,9 +26,9 @@ const EXIBIR = Object.entries(PARES).sort((a, b) => b[0].length - a[0].length);
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const exibir = (t) => EXIBIR.reduce((acc, [a, b]) => acc.replace(new RegExp(`(?<![\\p{L}\\p{N}])${esc(a)}(?![\\p{L}\\p{N}])`, "gu"), () => b), t).replace(/(\d{4}), e (\d{4})/g, "$1 e $2").replace(/\s*\.\.\.(?=\s|$)/g, "").replace(/\s+/g, " ");
 const cues = {};
-const blocos = fs.readdirSync(dir + "public/audio").filter((f) => f.endsWith(".srt")).length;
-for (let i = 1; i <= blocos; i++) {
-  const n = String(i).padStart(2, "0");
+// Qualquer numeração (ex.: série em partes: 00, 08, 09…): um cue por NN.srt existente
+const blocos = fs.readdirSync(dir + "public/audio").filter((f) => /^\d{2}\.srt$/.test(f)).map((f) => f.slice(0, 2)).sort();
+for (const n of blocos) {
   const srt = fs.readFileSync(dir + `public/audio/${n}.srt`, "utf8").trim().split(/\n\s*\n/);
   cues[n] = srt.map((b) => { const l = b.split("\n"); const [a, z] = l[1].split(" --> "); return { de: toMs(a), ate: toMs(z), texto: exibir(l.slice(2).join(" ")) }; }).filter((c) => c.texto.trim() !== "");
 }
