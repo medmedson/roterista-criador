@@ -36,6 +36,8 @@ const Auditor: React.FC = () => {
       if (raiz) {
         const base = raiz.getBoundingClientRect();
         const escala = base.width / W;
+        const cam = document.querySelector("[data-camera]");
+        const [cz, cs, ct] = (cam?.getAttribute("data-camera") ?? "1,0,0").split(",").map(Number);
         const ret = (el: Element) => {
           let r: { left: number; top: number; right: number; bottom: number } = el.getBoundingClientRect();
           // SVG com overflow visível: a caixa real é a união dos filhos (rótulos fora da área nominal)
@@ -46,12 +48,17 @@ const Auditor: React.FC = () => {
               r = { left: Math.min(r.left, q.left), top: Math.min(r.top, q.top), right: Math.max(r.right, q.right), bottom: Math.max(r.bottom, q.bottom) };
             }
           }
-          return {
+          const q = {
             x1: (r.left - base.left) / escala,
             y1: (r.top - base.top) / escala,
             x2: (r.right - base.left) / escala,
             y2: (r.bottom - base.top) / escala,
           };
+          // Câmera viva: mede no quadro "sem câmera" (o zoom lento corta as bordas de propósito)
+          if (!cam || !cam.contains(el) || el.closest("[data-camera-fixa]")) return q;
+          const sx = (x: number) => W / 2 + (x - W / 2 - cs) / cz;
+          const sy = (y: number) => H / 2 + (y - H / 2 - ct) / cz;
+          return { x1: sx(q.x1), y1: sy(q.y1), x2: sx(q.x2), y2: sy(q.y2) };
         };
         const capas = [...document.querySelectorAll("[data-cobre]")].filter((c) => opacidadeEfetiva(c) > 0.9);
         const capa = capas[capas.length - 1];

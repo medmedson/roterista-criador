@@ -18,10 +18,10 @@ O usuário quer um **mini documentário vivo**: a tela muda o tempo todo, o som 
   - Uma coisa acende quando é citada, o número conta enquanto é dito, o ponto do mapa pulsa no nome da cidade, o contador troca na virada da frase.
   - Use `r(i)` (início da fala i) para amarrar cada entrada à palavra certa.
   - Evite animação que roda sozinha sem relação com o que a voz diz.
-- **Câmera viva (já ligada em todo bloco):** o `auditado()` envolve cada bloco em `CameraViva` (`componentes/CameraViva.tsx`): zoom que respira entre 1,02 e 1,06 e deslize lento de até 12 px, contínuo no vídeo inteiro. Legenda, película e chamada de inscrição ficam fixas com `DesfazCamera`.
+- **Câmera viva (já ligada em todo bloco):** o `auditado()` envolve cada bloco em `CameraViva` (`componentes/CameraViva.tsx`): zoom que respira entre 1,015 e 1,045 e deslize lento de até 10 px, contínuo no vídeo inteiro. Legenda, película e chamada de inscrição ficam fixas com `DesfazCamera`.
   - Motivo: os primeiros vídeos tinham cerca de 90 trechos de 6 a 12 s de imagem parada cada um; o usuário pediu "mais vida nos trechos ociosos de imagens".
   - Não desligue. Camada nova que precise ficar fixa na tela vai dentro de `DesfazCamera`.
-  - Deixe 60 px de folga nas bordas para o zoom não cortar nada (o QA acusa `CORTADO`).
+  - O auditor mede `CORTADO` no quadro sem câmera (o corte leve das bordas é proposital), mas acusa `TEXTO_CORTADO` se um texto encostar na borda real. Deixe 45 px de folga para texto.
   - A câmera é o piso, não o teto: cada fala ainda precisa de elemento novo.
 - **Movimento de fundo:** em cena longa, use `Poeira`, grão da `Pelicula`, drift lento da câmera (`Camera`/`enquadra`) ou luz que varia (`Luzes`), para a tela nunca congelar.
 

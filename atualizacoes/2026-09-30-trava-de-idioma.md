@@ -232,9 +232,9 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 
 ## Câmera viva e "capítulos" (30/09/2026, tarde)
 
-- **Câmera viva em todo bloco.** Novo `componentes/CameraViva.tsx`. O `auditado()` envolve cada bloco nela: zoom que respira (1,02 a 1,06) e deslize lento (até 12 px). Legenda, película e chamada de inscrição ficam fixas com `DesfazCamera`.
+- **Câmera viva em todo bloco.** Novo `componentes/CameraViva.tsx`. O `auditado()` envolve cada bloco nela: zoom que respira (1,015 a 1,045) e deslize lento (até 10 px). Legenda, película e chamada de inscrição ficam fixas com `DesfazCamera`.
   - Motivo: os vídeos de SUS, Bolsa Família e SUAS tinham cerca de 90 trechos de 6 a 12 s de imagem parada cada.
   - Atualizar projetos antigos: copiar `CameraViva.tsx`, `Auditoria.tsx`, `Legenda.tsx`, `Quadro.tsx` e `ChamadaInscricao.tsx` do template.
-  - Deixe 60 px de folga nas bordas; o QA acusa `CORTADO` se o zoom cortar algo.
+  - O auditor mede `CORTADO` sem a câmera e acusa `TEXTO_CORTADO` quando texto encosta na borda real; deixe 45 px de folga para texto.
 - **Novo `scripts/producao/parado-video.py`.** Varre um mp4 pronto e lista os trechos parados, sem precisar rodar o QA bloco a bloco.
 - **"Capítulo", nunca "ato".** As cartelas dizem "CAPÍTULO II", e o roteiro usa "# CAPÍTULO I — NOME" e "tabela de capítulos". Regra do usuário.
