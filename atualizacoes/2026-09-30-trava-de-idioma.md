@@ -219,3 +219,6 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 - O QA agora aponta **PARADO**: mais de 6 s sem mudança na tela, via `qa-parado.py`. O arquivo tem de estar na pasta `video/` de cada projeto, e o `qa-quadros.mjs` chama esse script.
 - A auditoria agora pega **texto que quebra linha e sai da caixa**: TRANSBORDA vertical. Caixa de altura fixa exige `whiteSpace: nowrap` e `minWidth` com `padding`.
 - Em projetos já existentes, copie `assets/producao-template-video/{qa-parado.py,qa-quadros.mjs,src/componentes/Auditoria.tsx,src/componentes/KitBF.tsx}` para a pasta `video/`.
+
+- **AVC:** escrever direto (`AVC`), sem mapear no `siglas.json`. "a vê cê" foi reprovado. **Regra geral: não soletrar sigla à mão.**
+- **Revistas em inglês** (The Lancet, BMJ) no meio de frase longa: aprovadas como estão.

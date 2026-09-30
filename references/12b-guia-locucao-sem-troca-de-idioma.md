@@ -21,6 +21,7 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 | SUS e Bolsa Família | `IBGE` como "i bê gê é" | soava "ibgê" | `IBGE` escrito direto, dentro de frase normal |
 | SUS | `Butantan` | sotaque estranho | `Butantã` |
 | SUAS | `LBA` soletrada à mão ("éle bê á") | leitura ruim | `LBA` escrita direto |
+| SUS, ~7:33 | `AVC` soletrado à mão ("a vê cê") | leitura ruim | `AVC` escrito direto ("acidente vascular cerebral" também aprovado) |
 | SUAS | `TCU` soletrado à mão ("tê cê u") | leitura ruim | `TCU` escrito direto |
 | SUAS, ~11 min | `O SUS atende todos. O SUAS atende quem precisa.` | misturou idiomas | `O SUS atende todos, e o SUAS atende quem precisa.` |
 | SUAS | `Funabem` | o usuário ouviu as opções | manter `Funabem` como está (aprovado) |
@@ -54,8 +55,8 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 
 1. **Siglas no `locucao/siglas.json`:**
    - siglas que se leem como palavra (SUS, SUAS, CRAS, LOAS, PIB): `Sus`, `Suas`, `Cras`…;
-   - INSS, IBGE, LBA e TCU: deixar **sem mapear** (escritas direto);
-   - soletrar à mão ("i ene ésse ésse", "i bê gê é", "éle bê á", "tê cê u") piorou em todos os casos testados;
+   - INSS, IBGE, LBA, TCU e AVC: deixar **sem mapear** (escritas direto);
+   - soletrar à mão ("i ene ésse ésse", "i bê gê é", "éle bê á", "tê cê u", "a vê cê") piorou em todos os casos testados. **Regra: não soletrar sigla à mão; escrever direto ou usar o nome por extenso.**
    - siglas ainda soletradas sem queixa (BPC "bê pê cê", STF "ésse tê éfe") são suspeitas. Na primeira vez em um projeto, gere a amostra da forma direta e deixe o usuário escolher.
 2. **Antes de gerar os blocos, faça um teste de abertura:**
    - pegue a primeira frase de cada bloco e cada frase curta com sigla;

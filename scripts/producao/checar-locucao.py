@@ -51,7 +51,7 @@ for a in arqs:
                 avisos.append(("MÉDIO", f"sigla não testada: {s} em \"{f[:80]}\"", "gerar amostra (amostra-pronuncia.sh) e mapear no siglas.json se preciso"))
         # 3b) sigla soletrada à mão
         for m in SOLETRADA.finditer(f):
-            ok = re.sub(r"\s+é$", "", m.group(0)) in {"bê pê cê", "ésse tê éfe", "cê gê u", "a vê cê", "agá i vê", "cê pê í", "u bê ésse"}
+            ok = re.sub(r"\s+é$", "", m.group(0)) in {"bê pê cê", "ésse tê éfe", "cê gê u", "agá i vê", "cê pê í", "u bê ésse"}
             avisos.append(("MÉDIO" if ok else "ALTO", f"sigla soletrada à mão '{m.group(0)}' em \"{f[:80]}\"", "gerar amostras: sigla direta, nome por extenso ou só o nome (ex.: 'a Legião'); soletrar à mão já falhou com INSS e LBA"))
         # 4) palavras em inglês/estrangeiras
         for m in INGLES.finditer(f):
