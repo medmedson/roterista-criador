@@ -61,7 +61,8 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
    - pegue a primeira frase de cada bloco e cada frase curta com sigla;
    - gere amostras com `scripts/producao/amostra-pronuncia.sh`, sempre com a frase seguinte junto, para dar contexto;
    - compare variantes: frase atual, frase juntada, sigla direta, nome por extenso.
-3. **Entregue as amostras ao usuário como arquivos em `~/Downloads/<assunto>-opcoes/`**, um arquivo por opção (`opcao-1.mp3`…) e mais um com todas em sequência. O anexo na conversa nem sempre abre para ele. Pergunte o número da opção.
+3. **Entregue as amostras ao usuário como arquivos em `~/Downloads/<assunto>-opcoes/`** com `scripts/producao/amostra-pronuncia.sh` (um `opcao-N-<rotulo>.mp3` por versão + `todas-em-sequencia.mp3`). O anexo na conversa nem sempre abre para ele. Pergunte o número da opção.
+3b. **Antes de montar as cenas, mande a narração completa** (`scripts/producao/narracao-completa.sh`, em `~/Downloads/<tema>-narracao/`) para o usuário ouvir inteira e apontar os minutos com problema. Corrija tudo na narração antes de qualquer render.
 4. **Registre a escolha** na tabela de pronúncias (`12-producao-narracao.md`) e no `siglas.json` do projeto. Vale para todos os vídeos seguintes.
 5. **Quando juntar duas frases numa só, a cena muda:** o `.srt` passa a ter uma fala a menos e os índices `t(i)` se deslocam. Reparta a fala juntada em partes (pelo tamanho do texto) no começo do bloco, para os elementos continuarem entrando no ritmo. Veja o `Bloco01` do SUAS (SUS/INSS) e o `Bloco01` do Bolsa Família (acusações). Depois, rode o QA do bloco.
 6. **Depois de trocar uma sigla ou frase:**

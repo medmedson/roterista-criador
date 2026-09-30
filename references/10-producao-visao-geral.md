@@ -44,18 +44,29 @@ S = pasta da skill; C = pasta do canal; T = tema.
 3. Extraia a locução: `python3 $S/scripts/producao/extrair-locucao.py $C/projetos/$T`.
 4. Escreva as siglas e nomes em `locucao/siglas.json`, conforme a "Direção de locução" do roteiro e as regras do `12-producao-narracao.md`. Escreva as frases com pausa em `locucao/pausas.txt`.
 5. Gere o áudio: `bash $S/scripts/producao/gerar-audio.sh $C $T`. Antes da voz, ele roda o **verificador de idioma** (`checar-locucao.py`) e para se houver risco ALTO (`12b-guia-locucao-sem-troca-de-idioma.md`). Confira a duração total e o que o normalizador deixou sem tratar.
-6. Na primeira vez em um projeto, gere amostras de nomes difíceis (`amostra-pronuncia.sh`) e deixe o usuário escolher antes de seguir.
-7. Gere as trilhas e efeitos novos pedidos no roteiro. Crie `ferramentas/gerar-trilhas-<tema>.py` e `gerar-sfx-<tema>.py` a partir dos existentes (`14-producao-som.md`) e rode-os com saída em `video/public/sfx`.
-8. Baixe e confira as fotos com licença e registre em `video/public/fotos/CREDITOS.txt` (`16`, seção imagens).
-9. Crie o kit visual do tema em `src/componentes/Kit<TEMA>.tsx` com os elementos [NOVO] do roteiro (`13-producao-cenas.md`).
-10. Faça os blocos, um por vez:
+6. **Revisão da narração pelo usuário (obrigatória, antes de qualquer cena ou render).** O usuário prefere ouvir o áudio pronto e ir apontando correções, em vez de só descobrir no vídeo final.
+   - Rode `bash $S/scripts/producao/narracao-completa.sh $C $T`. Ele gera `~/Downloads/<tema>-narracao/`, com:
+     - `narracao-completa.mp3`: todos os blocos em ordem, com 1 s entre eles;
+     - `bloco-NN.mp3`;
+     - `indice.txt`: minuto de início de cada bloco e a primeira frase.
+   - Avise o usuário da pasta e peça que ele diga o **minuto** de cada trecho estranho. Use o `indice.txt` para achar o bloco: minuto do usuário − início do bloco = posição no bloco.
+   - Para cada trecho apontado, gere amostras (passo 7), aplique a escolha e regrave só esses blocos. Gere a narração completa de novo até ele aprovar.
+7. **Amostras para escolha (padrão do canal):** `bash $S/scripts/producao/amostra-pronuncia.sh $C <assunto> "A-atual|frase atual com contexto" "B-proposta|…"`.
+   - O script grava em `~/Downloads/<assunto>-opcoes/`: um `opcao-N-<rotulo>.mp3` por versão e `todas-em-sequencia.mp3`.
+   - Sempre em Downloads, nunca só como anexo, porque o anexo no chat nem sempre abre para o usuário.
+   - A primeira opção é sempre a atual (A). Cada amostra tem uma frase de contexto, nunca a palavra sozinha.
+   - Pergunte: "qual número ficou bom?". Registre a escolha no `12b-guia…`, na tabela de casos, e no `siglas.json`.
+8. Gere as trilhas e efeitos novos pedidos no roteiro. Crie `ferramentas/gerar-trilhas-<tema>.py` e `gerar-sfx-<tema>.py` a partir dos existentes (`14-producao-som.md`) e rode-os com saída em `video/public/sfx`.
+9. Baixe e confira as fotos com licença e registre em `video/public/fotos/CREDITOS.txt` (`16`, seção imagens).
+10. Crie o kit visual do tema em `src/componentes/Kit<TEMA>.tsx` com os elementos [NOVO] do roteiro (`13-producao-cenas.md`).
+11. Faça os blocos, um por vez:
     - escreva `src/cenas/BlocoNN.tsx` e registre no `Root.tsx`;
     - rode `node qa-quadros.mjs NN` até dar 0 problemas;
     - olhe a folha de contato (`qa/blocoNN/folha.jpg`) e corrija o que a auditoria não vê.
-11. Monte a composição completa e a capa: `cenas/Documentario.tsx` (Series com todos os blocos) e `cenas/Thumbnail.tsx`, seguindo o pacote de publicação do roteiro. Gere a capa com `npx remotion still Thumbnail ../render/thumbnail.png`.
-12. Descrição: pegue o texto pronto do roteiro e troque os capítulos pelos tempos de `bash $S/scripts/producao/capitulos.sh $C/projetos/$T`. Preencha os créditos das fotos. Passe as fontes para `render/fontes-completas.txt`. A descrição tem de ficar abaixo de 5.000 caracteres.
-13. Render: `caffeinate -dimsu ./render-final.sh`, em segundo plano. Leva de 15 a 40 min por bloco, conforme a carga da máquina (`15-producao-qa-render.md`).
-14. Confira o arquivo com `ffprobe` (duração e tamanho) e entregue: final, capa, descrição e fontes. Não gere prévia 720p, porque o usuário pediu só o arquivo final.
+12. Monte a composição completa e a capa: `cenas/Documentario.tsx` (Series com todos os blocos) e `cenas/Thumbnail.tsx`, seguindo o pacote de publicação do roteiro. Gere a capa com `npx remotion still Thumbnail ../render/thumbnail.png`.
+13. Descrição: pegue o texto pronto do roteiro e troque os capítulos pelos tempos de `bash $S/scripts/producao/capitulos.sh $C/projetos/$T`. Preencha os créditos das fotos. Passe as fontes para `render/fontes-completas.txt`. A descrição tem de ficar abaixo de 5.000 caracteres.
+14. Render: `caffeinate -dimsu ./render-final.sh`, em segundo plano. Leva de 15 a 40 min por bloco, conforme a carga da máquina (`15-producao-qa-render.md`).
+15. Confira o arquivo com `ffprobe` (duração e tamanho) e entregue: final, capa, descrição e fontes. Não gere prévia 720p, porque o usuário pediu só o arquivo final.
 
 ## Ordem de trabalho com o usuário
 

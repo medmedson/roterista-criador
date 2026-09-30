@@ -131,4 +131,4 @@ Tudo por código e gratuito: edge-tts (voz Remy) → Remotion (React) → ffmpeg
 - `references/15-producao-qa-render.md` — `qa-quadros.mjs` (0 problemas + folha de contato), render retomável, entrega.
 - `references/16-producao-regras-e-armadilhas.md` — preferências do usuário, licenças, tabela de erros já vividos e correções.
 
-Scripts: `scripts/producao/` (verificar-ambiente, novo-projeto, extrair-locucao, **checar-locucao** (trava de idioma antes da voz), gerar-audio, pausas, amostra-pronuncia, capitulos, render-final). Modelo de projeto: `assets/producao-template-video/` (package-lock travado; `npm ci`). Geradores de som: `assets/producao-ferramentas/` + `assets/producao-sfx-base/`.
+Scripts: `scripts/producao/` (verificar-ambiente, novo-projeto, extrair-locucao, **checar-locucao** (trava de idioma antes da voz), gerar-audio, pausas, amostra-pronuncia (amostras em ~/Downloads/<assunto>-opcoes), narracao-completa (áudio inteiro para o usuário revisar ANTES das cenas), capitulos, render-final). Modelo de projeto: `assets/producao-template-video/` (package-lock travado; `npm ci`). Geradores de som: `assets/producao-ferramentas/` + `assets/producao-sfx-base/`.

@@ -202,3 +202,8 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 - **TCU:** escrever direto (`TCU`). "tê cê u" foi reprovado. Remova `"TCU"` do `siglas.json`.
 - **Frases de tema soltas** ("Violência.", "Calamidade.", "E pandemia.") misturam idiomas. O verificador agora aponta essas frases como ALTO. Funda com a frase seguinte ("Há também a violência: …").
 - **Trecho de ~11 min do SUAS:** aprovado "O SUS atende todos, e o SUAS atende quem precisa." numa frase só.
+
+## Novo fluxo de revisão (30/09)
+
+- **Revisão da narração antes das cenas:** `scripts/producao/narracao-completa.sh <canal> <tema>` gera `~/Downloads/<tema>-narracao/` com o áudio completo, os blocos separados e um índice por minuto. O usuário ouve e aponta os minutos com problema. Só depois de aprovado começam as cenas e o render.
+- **Amostras:** `scripts/producao/amostra-pronuncia.sh <canal> <assunto> "A-atual|…" "B-…|…"` grava em `~/Downloads/<assunto>-opcoes/` (um arquivo por opção + todas em sequência).
