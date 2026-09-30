@@ -90,7 +90,8 @@ const Auditor: React.FC = () => {
               const bg = getComputedStyle(a).backgroundColor;
               if (bg && bg !== "transparent" && !/rgba\(\d+, \d+, \d+, 0\)/.test(bg)) {
                 const ra = a.getBoundingClientRect();
-                if (rt.height > 0 && (rt.bottom > ra.bottom + tol || rt.top < ra.top - tol)) vaza = true;
+                const tv = Math.max(tol, rt.height * 0.3); // folga para a caixa de linha de fontes grandes
+                if (rt.height > 0 && (rt.bottom > ra.bottom + tv || rt.top < ra.top - tv)) vaza = true;
                 break;
               }
               if (a === el) break;

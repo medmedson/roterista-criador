@@ -87,7 +87,12 @@ Uso: `<Sequence from={X} durationInFrames={150}><ChamadaInscricao duracao={150} 
 
 Nunca no meio de uma revelação, de um dado ou de um bloco de comoção.
 
-A narração acompanha com uma frase curta. Ela deve vir escrita no roteiro, e se não vier, peça à sessão de roteiro. Exemplo: "Se este documentário está te ajudando a entender, inscreva-se no canal e ative o sininho para receber os próximos." Passe essa frase pelo `checar-locucao.py` como qualquer outra. Na legenda, a tela da chamada entra como só texto (ocultar).
+**Jeito pronto (sem mexer nos tempos dos blocos):**
+- `cenas/Chamada.tsx` traz a cena de 8 s com voz própria (`public/audio/cta.mp3`, gerada com a frase abaixo), trilha baixa e efeitos.
+- No `Root.tsx`, embrulhe o bloco: `auditado(comChamada(Bloco02, DURACAO_02, "antes"))` e some `DURACAO_CHAMADA` na duração da `Composition`.
+- Padrão usado: "antes" do bloco 02 (depois do gancho), "antes" do bloco que abre o ato mais forte e "depois" do último bloco.
+
+A narração acompanha com uma frase curta. Ela deve vir escrita no roteiro, e se não vier, peça à sessão de roteiro. Exemplo: "Se este documentário está te ajudando a entender o Brasil, inscreva-se no canal e ative o sininho para receber os próximos." Passe essa frase pelo `checar-locucao.py` como qualquer outra. Na legenda, a tela da chamada entra como só texto (ocultar).
 
 ## 5. Layout preciso (sem quebra de linha e sem vazamento)
 

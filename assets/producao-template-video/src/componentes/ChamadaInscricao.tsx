@@ -31,11 +31,11 @@ export const ChamadaInscricao: React.FC<{ duracao: number; canal?: string; frase
   const clique = (t0: number) => interpolate(f, [t0, t0 + 12], [0, 1], c);
   const topo = posicao === "centro" ? 330 : 560;
   return (
-    <AbsoluteFill data-cobre style={{ opacity: sai, backgroundColor: `rgba(5,4,4,${0.72 * entra})` }}>
-      <div data-foco="chamada título" style={{ position: "absolute", left: 0, width: 1920, top: topo - 120, textAlign: "center", opacity: entra, translate: `0 ${(1 - entra) * -40}px`, fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 64, letterSpacing: 6, color: "#f4efe6", textShadow: "0 0 30px rgba(224,180,60,0.5)", whiteSpace: "nowrap" }}>
+    <AbsoluteFill data-cobre data-pausa-ok style={{ opacity: sai, backgroundColor: `rgba(5,4,4,${0.72 * entra})` }}>
+      <div data-foco="chamada título" style={{ position: "absolute", left: 0, width: 1920, top: topo - 120, textAlign: "center", opacity: entra, translate: `0 ${(1 - entra) * -40}px`, fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 64, letterSpacing: 6, color: "#f4efe6", textShadow: `0 0 ${30 + 20 * Math.sin(f / 8)}px rgba(224,180,60,0.6)`, whiteSpace: "nowrap" }}>
         {titulo}
       </div>
-      <div data-foco="chamada inscrição" style={{ position: "absolute", left: 960, top: topo, translate: "-50% 0", scale: String(0.7 + 0.3 * entra), opacity: entra, width: 1080, padding: "40px 50px", borderRadius: 28, background: "linear-gradient(135deg, #1b1715, #2a211b)", border: "3px solid #e0b43c", boxShadow: `0 30px 60px rgba(0,0,0,0.8), 0 0 ${60 * entra}px rgba(224,180,60,0.35)`, display: "flex", alignItems: "center", gap: 40 }}>
+      <div data-foco="chamada inscrição" style={{ position: "absolute", left: 960, top: topo, translate: "-50% 0", scale: String((0.7 + 0.3 * entra) * (1 + 0.05 * interpolate(f, [18, duracao], [0, 1], c))), opacity: entra, width: 1080, padding: "40px 50px", borderRadius: 28, background: "linear-gradient(135deg, #1b1715, #2a211b)", border: "3px solid #e0b43c", boxShadow: `0 30px 60px rgba(0,0,0,0.8), 0 0 ${60 * entra}px rgba(224,180,60,0.35)`, display: "flex", alignItems: "center", gap: 40 }}>
         <div style={{ width: 150, height: 150, borderRadius: "50%", background: "radial-gradient(circle at 35% 30%, #f2c230, #9a6f12)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 56, color: "#1b1715", flexShrink: 0 }}>CP</div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 10 }}>
           <div style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 44, letterSpacing: 3, color: "#f4efe6", whiteSpace: "nowrap" }}>{canal}</div>
