@@ -1,3 +1,4 @@
+import { DesfazCamera } from "./CameraViva";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Poeira } from "./Poeira";
 
@@ -21,6 +22,7 @@ export const Quadro: React.FC<{ children?: React.ReactNode }> = ({ children }) =
 export const Pelicula: React.FC = () => {
   const frame = useCurrentFrame();
   return (
+    <DesfazCamera>
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       <Poeira />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0, opacity: 0.13, mixBlendMode: "overlay" }}>
@@ -33,5 +35,6 @@ export const Pelicula: React.FC = () => {
         style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%)" }}
       />
     </AbsoluteFill>
+    </DesfazCamera>
   );
 };

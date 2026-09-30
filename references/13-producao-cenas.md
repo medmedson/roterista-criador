@@ -17,7 +17,7 @@ Catálogo completo de componentes e props: `13b-producao-catalogo-componentes.md
 const C = cues["07"];
 const t = (i: number) => ms(C[i].de);          // frame em que começa a fala i
 const FIM = ms(C[C.length - 1].ate);
-export const DURACAO_07 = FIM + 30;             // ou CARTELA.de + CARTELA.dur quando há cartela de ato
+export const DURACAO_07 = FIM + 30;             // ou CARTELA.de + CARTELA.dur quando há cartela de capítulo
 
 const P3: React.FC<{ inicio: number }> = ({ inicio }) => {
   const r = (i: number) => t(i) - inicio;       // frame RELATIVO dentro da parte
@@ -33,7 +33,7 @@ const P3: React.FC<{ inicio: number }> = ({ inicio }) => {
 
 Outros padrões:
 - **Pré-roll antes da voz** (painel que acende antes de falar): use `OFF = 110`, `t(i) = OFF + ms(...)`, o áudio em `<Sequence from={OFF}>` e `<Legenda atraso={OFF}>`.
-- **Cartela de ato:** 25 frames de preto (`data-cobre data-pausa-ok`), depois a cartela ("ATO II" e o título) com `sting`, sem legenda.
+- **Cartela de capítulo:** 25 frames de preto (`data-cobre data-pausa-ok`), depois a cartela ("CAPÍTULO II" e o título; nunca "ATO", regra do usuário) com `sting`, sem legenda.
 - **Conteúdo não pode ficar sob a legenda:** a faixa reservada é de 200 px embaixo. Use `Centro` com `paddingBottom: 200` e mantenha tudo acima de y ≈ 880. Legenda longa (5 linhas) sobe mais; nesse caso, encolha o conteúdo.
 
 ## Legenda
@@ -45,7 +45,7 @@ Oculte a legenda em toda tela que é só texto, porque ela duplicaria o que já 
 - citação e recorte de texto;
 - número ou contador sozinho;
 - pergunta na tela;
-- cartela de ato;
+- cartela de capítulo;
 - tela final.
 
 Deixe a legenda nas telas com imagem, mapa, gráfico ou objeto.

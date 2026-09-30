@@ -1,3 +1,4 @@
+import { DesfazCamera } from "./CameraViva";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { cores, fontes, ms } from "../tema";
 
@@ -12,6 +13,7 @@ export const Legenda: React.FC<{ cues: Cue[]; ocultar?: [number, number][]; atra
   const cue = cues.find((c) => frame >= ms(c.de) && frame < ms(c.ate));
   if (!cue) return null;
   return (
+    <DesfazCamera>
     <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 36 }}>
       <div
         data-legenda
@@ -31,5 +33,6 @@ export const Legenda: React.FC<{ cues: Cue[]; ocultar?: [number, number][]; atra
         {cue.texto}
       </div>
     </AbsoluteFill>
+    </DesfazCamera>
   );
 };

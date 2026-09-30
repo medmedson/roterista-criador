@@ -203,7 +203,7 @@ const P9: React.FC = () => (
 
 const Cartela: React.FC = () => (
   <AbsoluteFill data-cobre style={{ backgroundColor: "#000", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: 20 }}>
-    <div data-foco="cartela ato II" style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 60, letterSpacing: 16, color: cores.papelEscuro }}>ATO II</div>
+    <div data-foco="cartela capítulo II" style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 60, letterSpacing: 16, color: cores.papelEscuro }}>CAPÍTULO II</div>
     <div data-foco="cartela o sistema" style={{ fontFamily: fontes.jornal, fontWeight: 900, fontSize: 130, color: cores.papel }}>O sistema</div>
   </AbsoluteFill>
 );
@@ -217,7 +217,7 @@ export const Bloco04: React.FC = () => (
     <Sequence name="Preto" from={FIM + 20} durationInFrames={CARTELA.de - FIM - 20}>
       <AbsoluteFill data-cobre data-pausa-ok style={{ backgroundColor: "#000" }} />
     </Sequence>
-    <Sequence name="Cartela ato II" from={CARTELA.de}><Cartela /></Sequence>
+    <Sequence name="Cartela capítulo II" from={CARTELA.de}><Cartela /></Sequence>
     <Legenda cues={C} ocultar={[[0, t(9)], [t(10), t(11)], [t(14), t(16)], [FIM + 20, DURACAO_04]]} />
 
     <Audio src={staticFile("audio/04.mp3")} />

@@ -153,7 +153,7 @@ const P7: React.FC<{ inicio: number }> = ({ inicio }) => {
 
 const Cartela: React.FC = () => (
   <AbsoluteFill data-cobre style={{ backgroundColor: "#000", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: 20 }}>
-    <div data-foco="cartela ato I" style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 60, letterSpacing: 16, color: cores.papelEscuro }}>ATO I</div>
+    <div data-foco="cartela capítulo I" style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 60, letterSpacing: 16, color: cores.papelEscuro }}>CAPÍTULO I</div>
     <div data-foco="cartela o favor" style={{ fontFamily: fontes.jornal, fontWeight: 900, fontSize: 130, color: cores.papel }}>O favor</div>
   </AbsoluteFill>
 );
@@ -168,7 +168,7 @@ export const Bloco01: React.FC = () => (
     <Sequence name="Preto" from={FIM + 20} durationInFrames={CARTELA.de - FIM - 20}>
       <AbsoluteFill data-cobre data-pausa-ok style={{ backgroundColor: "#000" }} />
     </Sequence>
-    <Sequence name="Cartela ato I" from={CARTELA.de}><Cartela /></Sequence>
+    <Sequence name="Cartela capítulo I" from={CARTELA.de}><Cartela /></Sequence>
     <Legenda cues={C} atraso={OFF} ocultar={[[0, t(0)], [t(5), t(8)], [t(12), t(16)], [FIM + 20, DURACAO_01]]} />
 
     <Sequence from={OFF}><Audio src={staticFile("audio/01.mp3")} /></Sequence>

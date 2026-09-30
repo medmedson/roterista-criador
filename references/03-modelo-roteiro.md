@@ -13,7 +13,7 @@ Exemplos completos e aprovados: `projetos/sus/roteiro.md`, `projetos/bolsa-famil
 ## A decisão editorial
 Título de publicação · Título alternativo (A/B) · Frase da capa (2 palavras)
 Pergunta do vídeo · Tese narrativa (3 pontos) · Promessa de retenção
-Tabela de atos: | Ato | Tempo | Função dramática | Revelação |
+Tabela de capítulos: | Capítulo | Tempo | Função dramática | Revelação |
 
 ## Kit visual deste vídeo (novo)
 Motivo visual próprio (ex.: SUS = linha de batimento; Bolsa Família = LinhaPobreza; SUAS = PainelSenhas)
@@ -30,7 +30,7 @@ Tabela: Bloco | Minuto | Clima | Trilha (nome, [NOVA TRILHA]) | Instrumentação
 Regras: mesma trilha nunca abre dois blocos seguidos; comoção = piano+cordas, sem efeito por cima; silêncio antes de revelação.
 
 ## Roteiro mestre
-# ATO I — NOME
+# CAPÍTULO I — NOME
 ### B1 · 00:00–01:45 — Nome do bloco
 **Emoção:** ... **Curva:** ...   **Trilha:** `nome` em −20 dB.
 **LOCUÇÃO**
@@ -59,7 +59,7 @@ Regras: mesma trilha nunca abre dois blocos seguidos; comoção = piano+cordas, 
 - Frases curtas, ritmo de telejornal. Pergunta-ponte no fim de cada bloco. Gancho de fato concreto nos primeiros 60 s.
 - Números, datas, horas e siglas por extenso ("vinte e sete vírgula nove milhões"; "bê pê cê" só se a normalização exigir).
 - **Abertura de bloco**: nunca começar com palavras soltas (a voz Remy troca de idioma); usar frase introdutória em português antes de qualquer lista. Ver também `12b-guia-locucao-sem-troca-de-idioma.md` (siglas isoladas, nomes estrangeiros).
-- **Chamada de inscrição** em 3 pontos (fim do B1, meio antes do ato de maior interesse, fim junto da tela final), cada uma com locução própria e cena `ChamadaInscricao`. Sem pergunta curta solta ("E a compra de voto?", não "Compra de voto?").
+- **Chamada de inscrição** em 3 pontos (fim do B1, meio antes do capítulo de maior interesse, fim junto da tela final), cada uma com locução própria e cena `ChamadaInscricao`. Sem pergunta curta solta ("E a compra de voto?", não "Compra de voto?").
 - **Anos seguidos**: nunca "1990 e 2002" colados nem "em 1990 e sancionada em 1993". Use "de 1990 a 2002", "em 2022 e em 2023" ou reordene.
 - Tudo que é estimativa, amostra ou associação carrega a ressalva dentro da frase.
 - Citação literal entre aspas com autor, data e link; aparece em tela como documento com marca-texto.
@@ -72,7 +72,7 @@ Regras: mesma trilha nunca abre dois blocos seguidos; comoção = piano+cordas, 
 - `ESTÁTICO` (leitura: documento, citação, número-chave; segurar 3–6 s, só drift/zoom lento) × `ANIMADO` (dados, mapas, contadores, rotas). Alvo ~40/60; sem duas estáticas longas seguidas; número animado termina com hold estático de 2–3 s; nunca animar sobre texto que precisa ser lido.
 - Cena só de texto (cartela, citação, documento, número sozinho, pergunta, tela final) = **SEM LEGENDA**.
 - Carimbos: 1–2 por bloco, só em revelação, nunca sobre texto. Drama (tremor + clarão + impacto grave) só em revelações grandes.
-- Transições com sentido: corte seco (choque), fusão lenta (tempo/luto), whip/whoosh (assunto), match cut, zoom-through (entrar em documento), flash (drama), fade a preto (fim de ato), página virando (capítulo), glitch (dado/tecnologia); 8–15 frames; SFX casado; não repetir o mesmo tipo mais de 2 vezes seguidas.
+- Transições com sentido: corte seco (choque), fusão lenta (tempo/luto), whip/whoosh (assunto), match cut, zoom-through (entrar em documento), flash (drama), fade a preto (fim de capítulo), página virando (abertura de capítulo), glitch (dado/tecnologia); 8–15 frames; SFX casado; não repetir o mesmo tipo mais de 2 vezes seguidas.
 - Som: trilha muda de clima por bloco; nível sob a voz −18 a −24 dB; silêncio curto como recurso; batida/som-assinatura ligados ao motivo; comoção sem efeitos por cima.
 - Etiquetas de tela curtas (~25 caracteres por linha); texto longo estoura a coluna.
 - Nada cortado pela borda sem ser proposital; nada sob a legenda; nada sobreposto; nunca tela vazia.

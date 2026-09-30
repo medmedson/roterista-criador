@@ -38,7 +38,7 @@ Cada trilha tem 96 a 100 s. O componente `Trilha` repete em loop quando precisa.
 - Trilha: o `Trilha` já baixa sozinho para ≤ 0.12 enquanto a voz fala (ducking pelo `cues.json`). O `volume` pedido (0.16 a 0.30) vale nas pausas e cartelas. Ambiência: 0.10 a 0.15.
 - **`ate - de` precisa ser maior que `2 × fade`.** Se não for, o Remotion dá erro "inputRange must be strictly monotonically increasing".
 - Revelação: `riser` (30 a 45 frames), 0,5 a 1 s de silêncio, depois `impacto` e só então a informação.
-- Drama forte (um por ato): `impacto` + tremor do `Fundo` (translate) + `<Clarao>`.
+- Drama forte (um por capítulo): `impacto` + tremor do `Fundo` (translate) + `<Clarao>`.
 - Som-assinatura do tema (batimento no SUS, ding-senha no SUAS): no máximo 1 a 2 por cena, só em momentos humanos. Nunca sob dado de orçamento.
 - O usuário quer trilha cobrindo quase todo o vídeo, com suspense e drama onde cabe. Silêncio só como pausa curta.
 

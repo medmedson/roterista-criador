@@ -18,6 +18,11 @@ O usuário quer um **mini documentário vivo**: a tela muda o tempo todo, o som 
   - Uma coisa acende quando é citada, o número conta enquanto é dito, o ponto do mapa pulsa no nome da cidade, o contador troca na virada da frase.
   - Use `r(i)` (início da fala i) para amarrar cada entrada à palavra certa.
   - Evite animação que roda sozinha sem relação com o que a voz diz.
+- **Câmera viva (já ligada em todo bloco):** o `auditado()` envolve cada bloco em `CameraViva` (`componentes/CameraViva.tsx`): zoom que respira entre 1,02 e 1,06 e deslize lento de até 12 px, contínuo no vídeo inteiro. Legenda, película e chamada de inscrição ficam fixas com `DesfazCamera`.
+  - Motivo: os primeiros vídeos tinham cerca de 90 trechos de 6 a 12 s de imagem parada cada um; o usuário pediu "mais vida nos trechos ociosos de imagens".
+  - Não desligue. Camada nova que precise ficar fixa na tela vai dentro de `DesfazCamera`.
+  - Deixe 60 px de folga nas bordas para o zoom não cortar nada (o QA acusa `CORTADO`).
+  - A câmera é o piso, não o teto: cada fala ainda precisa de elemento novo.
 - **Movimento de fundo:** em cena longa, use `Poeira`, grão da `Pelicula`, drift lento da câmera (`Camera`/`enquadra`) ou luz que varia (`Luzes`), para a tela nunca congelar.
 
 ## 2. Transições (entre cenas e entre blocos)
@@ -32,7 +37,7 @@ Escolha pelo sentido narrativo e case sempre com um efeito sonoro:
 | zoom-through | entrar num documento ou objeto | `Saida tipo="zoom"` | `whoosh` |
 | sépia | ida ao passado | `Saida tipo="sepia"` ou filtro no `Fundo` | `papel-virar` |
 | flash | drama, virada | `Clarao` (branco ou vermelho) + tremor do `Fundo` | `impacto` + `sting` |
-| preto + cartela | fim de ato | preto (`data-pausa-ok`) + cartela "ATO N" | `sting` |
+| preto + cartela | fim de capítulo | preto (`data-pausa-ok`) + cartela "CAPÍTULO N" (nunca "ATO") | `sting` |
 
 Não repita o mesmo tipo mais de 2 vezes seguidas. Toda troca de bloco tem transição.
 
@@ -81,8 +86,8 @@ Uso: `<Sequence from={X} durationInFrames={150}><ChamadaInscricao duracao={150} 
 - `whoosh` na saída.
 
 **Momentos estratégicos (3 por vídeo):**
-1. **Depois do gancho**, no fim do bloco 1 (por volta de 1:00 a 1:40), antes da primeira cartela de ato: o espectador já sabe o que vai ganhar.
-2. **No meio**, antes do ato de maior interesse (as feridas, os mitos, a revelação principal), como "não perca o que vem".
+1. **Depois do gancho**, no fim do bloco 1 (por volta de 1:00 a 1:40), antes da primeira cartela de capítulo: o espectador já sabe o que vai ganhar.
+2. **No meio**, antes do capítulo de maior interesse (as feridas, os mitos, a revelação principal), como "não perca o que vem".
 3. **No fim**, junto da tela final.
 
 Nunca no meio de uma revelação, de um dado ou de um bloco de comoção.
@@ -90,7 +95,7 @@ Nunca no meio de uma revelação, de um dado ou de um bloco de comoção.
 **Jeito pronto (sem mexer nos tempos dos blocos):**
 - `cenas/Chamada.tsx` traz a cena de 8 s com voz própria (`public/audio/cta.mp3`, gerada com a frase abaixo), trilha baixa e efeitos.
 - No `Root.tsx`, embrulhe o bloco: `auditado(comChamada(Bloco02, DURACAO_02, "antes"))` e some `DURACAO_CHAMADA` na duração da `Composition`.
-- Padrão usado: "antes" do bloco 02 (depois do gancho), "antes" do bloco que abre o ato mais forte e "depois" do último bloco.
+- Padrão usado: "antes" do bloco 02 (depois do gancho), "antes" do bloco que abre o capítulo mais forte e "depois" do último bloco.
 
 A narração acompanha com uma frase curta. Ela deve vir escrita no roteiro, e se não vier, peça à sessão de roteiro. Exemplo: "Se este documentário está te ajudando a entender o Brasil, inscreva-se no canal e ative o sininho para receber os próximos." Passe essa frase pelo `checar-locucao.py` como qualquer outra. Na legenda, a tela da chamada entra como só texto (ocultar).
 

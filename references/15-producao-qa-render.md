@@ -20,7 +20,7 @@ O script renderiza 1 a cada 6 quadros com `inputProps {qa: true}`. Em cada quadr
 | TRANSBORDA | texto vaza da própria caixa na horizontal | `whiteSpace: nowrap` com largura maior, ou texto menor |
 | TEXTO_CORTADO | texto cortado por `overflow: hidden` ou `foreignObject` | aumentar a caixa ou trocar `foreignObject` por `<text>` SVG |
 | TRANSBORDA (vertical) | texto quebrou linha e saiu da caixa com fundo pintado (ex.: visor "R$ 13,04 BI · SET/2026") | `whiteSpace: nowrap` + caixa com `minWidth`/`padding`; encurtar texto |
-| PARADO | mais de 6 s sem mudança visível na tela (`qa-parado.py`) | adicionar elemento amarrado à fala, zoom/drift lento, marca-texto que avança (ver `13c`) |
+| PARADO | mais de 6 s sem mudança visível na tela (`qa-parado.py`) | a `CameraViva` já resolve a maioria; se ainda aparecer (tela preta ou fundo liso), adicionar elemento amarrado à fala, zoom/drift lento, marca-texto que avança (ver `13c`) |
 
 Regra: só entregue o bloco com **0 problemas** e depois de olhar a folha de contato. A auditoria não vê várias coisas, e a folha pega:
 - elemento que nunca aparece (erro de frame relativo em Sequence aninhada);
@@ -56,3 +56,4 @@ tail -2 render/render.log                                                       
 - Mande o final para o usuário por arquivo (SendUserFile, `display: attach`), com o caminho da capa e da descrição.
 - Mande a capa como imagem.
 - Ofereça a limpeza dos blocos intermediários só depois da publicação.
+- Varredura rápida de um vídeo pronto: `python scripts/producao/parado-video.py render/<tema>-documentario-final.mp4`.

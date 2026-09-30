@@ -1,3 +1,4 @@
+import { CameraViva } from "./CameraViva";
 import { useEffect } from "react";
 import { getInputProps, useCurrentFrame, useDelayRender } from "remotion";
 
@@ -155,8 +156,10 @@ export const auditado = <P extends object>(Cena: React.FC<P>): React.FC<P> => {
   const Comp: React.FC<P> = (props) => {
     const qa = Boolean((getInputProps() as { qa?: boolean }).qa);
     return (
-      <div data-raiz-video style={{ position: "absolute", inset: 0 }}>
-        <Cena {...props} />
+      <div data-raiz-video style={{ position: "absolute", inset: 0, overflow: "hidden", backgroundColor: "#000" }}>
+        <CameraViva>
+          <Cena {...props} />
+        </CameraViva>
         {qa ? <Auditor /> : null}
       </div>
     );

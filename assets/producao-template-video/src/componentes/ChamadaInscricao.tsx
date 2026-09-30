@@ -1,3 +1,4 @@
+import { DesfazCamera } from "./CameraViva";
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { fontes } from "../tema";
 
@@ -31,6 +32,7 @@ export const ChamadaInscricao: React.FC<{ duracao: number; canal?: string; frase
   const clique = (t0: number) => interpolate(f, [t0, t0 + 12], [0, 1], c);
   const topo = posicao === "centro" ? 330 : 560;
   return (
+    <DesfazCamera>
     <AbsoluteFill data-cobre data-pausa-ok style={{ opacity: sai, backgroundColor: `rgba(5,4,4,${0.72 * entra})` }}>
       <div data-foco="chamada título" style={{ position: "absolute", left: 0, width: 1920, top: topo - 120, textAlign: "center", opacity: entra, translate: `0 ${(1 - entra) * -40}px`, fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 64, letterSpacing: 6, color: "#f4efe6", textShadow: `0 0 ${30 + 20 * Math.sin(f / 8)}px rgba(224,180,60,0.6)`, whiteSpace: "nowrap" }}>
         {titulo}
@@ -72,5 +74,6 @@ export const ChamadaInscricao: React.FC<{ duracao: number; canal?: string; frase
         <path d="M8 4 L8 46 L20 36 L28 54 L36 50 L28 32 L44 32 Z" fill="#ffffff" stroke="#111" strokeWidth={3} />
       </svg>
     </AbsoluteFill>
+    </DesfazCamera>
   );
 };

@@ -3,7 +3,7 @@
 ## Mensagem-padrão (send_message para a sessão "Canal dark: geração de mídia")
 Enviar quando o roteiro estiver auditado. Conteúdo mínimo:
 1. Caminho: `~/canaldark/projetos/<tema>/roteiro.md` (+ `apuracao/`).
-2. Título, duração, número de blocos e atos.
+2. Título, duração, número de blocos e capítulos.
 3. Novidades do vídeo: motivo visual, som-assinatura, elementos [NOVO], trilhas `[NOVA TRILHA]` (gerar antes do render), SFX novos.
 4. Regras fixas: cenas só de texto = SEM LEGENDA; comoção sem efeito por cima; política de imagens (proibidos e alternativas).
 5. Pendências (perguntas a alinhar, gatilhos a conferir após gravar a voz, cronometragem real).
