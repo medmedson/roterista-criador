@@ -24,7 +24,7 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 | SUAS | `TCU` soletrado à mão ("tê cê u") | leitura ruim | `TCU` escrito direto |
 | SUAS, ~11 min | `O SUS atende todos. O SUAS atende quem precisa.` | misturou idiomas | `O SUS atende todos, e o SUAS atende quem precisa.` |
 | SUAS | `Funabem` | o usuário ouviu as opções | manter `Funabem` como está (aprovado) |
-| SUS, ~7:26 (suspeita) | `British Medical Journal` | nome em inglês muda o sotaque | preferir "a revista médica britânica BMJ" |
+| SUS, ~7:26 | `British Medical Journal`, `The Lancet`, `Lancet Public Health` no meio de frase longa | testado em 30/09: o usuário achou atual e proposta boas | nome em inglês é aceitável DENTRO de frase longa em português; em frase curta, evitar |
 
 ## Regras para ESCREVER a locução (roteiro)
 
@@ -48,7 +48,7 @@ O `gerar-audio.sh` roda o verificador e **para** se houver aviso ALTO. Para reso
 
 Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala aparece antes do render, não depois de o vídeo estar pronto.
 
-**Nomes de revistas e instituições estrangeiras (recomendação; amostras A/B enviadas ao usuário em 30/09, confirmar a escolha):** não falar o nome em inglês. A narração usa a descrição em português ("uma das principais revistas médicas do mundo", "uma revista médica britânica", "uma revista internacional de saúde pública"). O nome original aparece na tela, no recorte ou no rodapé da fonte. Assim a informação continua completa e a voz não troca de idioma.
+**Nomes de revistas e instituições estrangeiras:** no teste de 30/09 o usuário aprovou tanto o nome em inglês dentro de frase longa quanto a descrição em português. Use o nome original só no meio de frase longa. Em frase curta ou no começo de bloco, prefira a descrição em português. A narração usa a descrição em português ("uma das principais revistas médicas do mundo", "uma revista médica britânica", "uma revista internacional de saúde pública"). O nome original aparece na tela, no recorte ou no rodapé da fonte. Assim a informação continua completa e a voz não troca de idioma.
 
 ## Regras para GERAR o áudio (produção)
 
