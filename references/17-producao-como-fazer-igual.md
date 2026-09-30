@@ -28,7 +28,7 @@ A voz é `fr-FR-RemyMultilingualNeural`, com tom de âncora de telejornal. Ela s
 **Como conferir (obrigatório):**
 1. `checar-locucao.py <projeto> --raw`: zero ALTO.
 2. Amostras A (atual) × B (proposta) de cada nome, sigla ou frase duvidosa, em `~/Downloads/<assunto>-opcoes/` (`amostra-pronuncia.sh`).
-3. Narração completa em `~/Downloads/<tema>-narracao/` (`narracao-completa.sh`), para o usuário ouvir e apontar o **minuto** do que estranhou.
+3. O usuário revisa **assistindo o vídeo final** e aponta o minuto; não espere aprovação da narração para seguir (a narração completa em Downloads só se ele pedir).
 4. Aplicar a escolha no `NN_raw.txt` e **avisar o roteirista** para copiar a mesma redação no roteiro. Roteiro e áudio têm de ficar iguais; confira extraindo o roteiro numa pasta temporária e comparando.
 
 ---

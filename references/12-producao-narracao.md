@@ -36,6 +36,7 @@ Depois de normalizar, confira o que ele imprime em "restou:" (números ou siglas
 | LBA | deixar `LBA` (sem mapear) | "éle bê á" ficou ruim; direta aprovada (30/09) |
 | Funabem | manter `Funabem` | aprovada como está (30/09) |
 | Collor | `Kólor` | |
+| SAMU | `Samu` | escolhido em amostra (30/09/2026); a sigla direta soava estranha |
 | siglas lidas como palavra (SUS, SUAS, CRAS, CREAS, LOAS, PIB) | `Sus`, `Suas`, `Cras`… | em maiúsculas a voz soletra |
 | TCU | deixar `TCU` (sem mapear) | "tê cê u" reprovado (30/09) |
 | siglas ainda soletradas (BPC, STF) | `bê pê cê`, `ésse tê éfe` | sem queixa até agora, mas suspeitas: testar a forma direta |

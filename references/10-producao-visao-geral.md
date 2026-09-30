@@ -44,14 +44,11 @@ S = pasta da skill; C = pasta do canal; T = tema.
 3. Extraia a locução: `python3 $S/scripts/producao/extrair-locucao.py $C/projetos/$T`.
 4. Escreva as siglas e nomes em `locucao/siglas.json`, conforme a "Direção de locução" do roteiro e as regras do `12-producao-narracao.md`. Escreva as frases com pausa em `locucao/pausas.txt`.
 5. Gere o áudio: `bash $S/scripts/producao/gerar-audio.sh $C $T`. Antes da voz, ele roda o **verificador de idioma** (`checar-locucao.py`) e para se houver risco ALTO (`12b-guia-locucao-sem-troca-de-idioma.md`). Confira a duração total e o que o normalizador deixou sem tratar.
-6. **Revisão da narração pelo usuário (obrigatória, antes de qualquer cena ou render).** O usuário prefere ouvir o áudio pronto e ir apontando correções, em vez de só descobrir no vídeo final.
-   - Rode `bash $S/scripts/producao/narracao-completa.sh $C $T`. Ele gera `~/Downloads/<tema>-narracao/`, com:
-     - `narracao-completa.mp3`: todos os blocos em ordem, com 1 s entre eles;
-     - `bloco-NN.mp3`;
-     - `indice.txt`: minuto de início de cada bloco e a primeira frase.
-   - Avise o usuário da pasta e peça que ele diga o **minuto** de cada trecho estranho. Use o `indice.txt` para achar o bloco: minuto do usuário − início do bloco = posição no bloco.
-   - Para cada trecho apontado, gere amostras (passo 7), aplique a escolha e regrave só esses blocos. Gere a narração completa de novo até ele aprovar.
-7. **Amostras para escolha (padrão do canal):** `bash $S/scripts/producao/amostra-pronuncia.sh $C <assunto> "A-atual|frase atual com contexto" "B-proposta|…"`.
+6. **Revisão pelo usuário: no vídeo final.** O usuário não ouve a narração antes (não tem tempo); ele assiste o vídeo pronto e aponta o **minuto** do que estranhou.
+   - Por isso a trava de idioma (passo 5) e as pronúncias aprovadas (`12`, `12b`) são aplicadas sem esperar aprovação: na dúvida, use a forma mais segura em português (sem sigla solta, sem palavra estrangeira).
+   - `narracao-completa.sh` continua disponível se ele pedir para ouvir antes.
+   - Correção apontada no vídeo: ache o bloco pelos capítulos (`capitulos.sh`), corrija o `NN_raw.txt`, regrave só esse bloco, confira a cena e re-renderize só os blocos afetados.
+7. **Amostras para escolha (só em dúvida real; não travar a produção esperando):** `bash $S/scripts/producao/amostra-pronuncia.sh $C <assunto> "A-atual|frase atual com contexto" "B-proposta|…"`.
    - O script grava em `~/Downloads/<assunto>-opcoes/`: um `opcao-N-<rotulo>.mp3` por versão e `todas-em-sequencia.mp3`.
    - Sempre em Downloads, nunca só como anexo, porque o anexo no chat nem sempre abre para o usuário.
    - A primeira opção é sempre a atual (A). Cada amostra tem uma frase de contexto, nunca a palavra sozinha.
