@@ -48,6 +48,13 @@ Não repita o mesmo tipo mais de 2 vezes seguidas. Toda troca de bloco tem trans
 - **Ambiência** quando o lugar pede: `sala-espera`, `chuva-distante`, `murmurio-multidao`, `feira-ambiencia`, `passos-corredor`, com volume 0.10 a 0.15.
 - **Som-assinatura** do tema (batimento no SUS, ding de senha no SUAS): nos momentos humanos, 1 a 2 vezes por cena, nunca sob dado de orçamento.
 
+### Voz sempre acima da música (garantido no código)
+
+- O componente `Trilha` faz **ducking automático**. Enquanto a narração fala (falas do `cues.json` do bloco), a música desce para no máximo `VOL_SOB_VOZ = 0.12`, com rampa de 8 frames. Nas pausas, cartelas e telas finais, ela volta ao volume pedido.
+- Se a voz do bloco começa depois de um pré-roll (painel antes da fala), passe `atrasoVoz={OFF}` em cada `Trilha` desse bloco.
+- Não suba `VOL_SOB_VOZ` e não toque trilha com `<Audio>` direto: use sempre `Trilha`, senão a garantia se perde.
+- Efeitos (`Efeito`) não baixam sozinhos. Mantenha 0.3 a 0.6 sob a voz e deixe os mais fortes (`impacto`, `sting`) para as pausas.
+
 ## 4. Adaptar à emoção de cada trecho
 
 | Emoção | Trilha | Visual | Som |
@@ -59,6 +66,28 @@ Não repita o mesmo tipo mais de 2 vezes seguidas. Toda troca de bloco tem trans
 | **Indignação fria** | sintetizador grave, tique (`balanco`) | barras que despencam, contraste vermelho × cinza | `clique` seco |
 | **Didático** | pulso leve, marimba (`rede`, `investigacao`) | fluxos, prédio em andares, mapas com rede | `clique` por item |
 | **Revelação** | pausa da trilha | tela limpa com um número ou frase | `riser` → 0,5–1 s de silêncio → `impacto` |
+
+## 4b. Chamada "Inscreva-se + ative o sininho" (em TODO vídeo)
+
+Componente `ChamadaInscricao`, uma super produção de 5 s:
+- título "GOSTANDO? INSCREVA-SE E ATIVE O SININHO";
+- cartão do canal com o botão INSCREVA-SE, que o cursor clica e vira INSCRITO ✓;
+- o cursor clica no sino, que balança com ondas de notificação e confetes dourados.
+
+Uso: `<Sequence from={X} durationInFrames={150}><ChamadaInscricao duracao={150} /></Sequence>`, com os sons casados:
+- `whoosh` na entrada (X);
+- `clique` em X+40;
+- `ding-senha` ou `sting` em X+72;
+- `whoosh` na saída.
+
+**Momentos estratégicos (3 por vídeo):**
+1. **Depois do gancho**, no fim do bloco 1 (por volta de 1:00 a 1:40), antes da primeira cartela de ato: o espectador já sabe o que vai ganhar.
+2. **No meio**, antes do ato de maior interesse (as feridas, os mitos, a revelação principal), como "não perca o que vem".
+3. **No fim**, junto da tela final.
+
+Nunca no meio de uma revelação, de um dado ou de um bloco de comoção.
+
+A narração acompanha com uma frase curta. Ela deve vir escrita no roteiro, e se não vier, peça à sessão de roteiro. Exemplo: "Se este documentário está te ajudando a entender, inscreva-se no canal e ative o sininho para receber os próximos." Passe essa frase pelo `checar-locucao.py` como qualquer outra. Na legenda, a tela da chamada entra como só texto (ocultar).
 
 ## 5. Layout preciso (sem quebra de linha e sem vazamento)
 
@@ -80,4 +109,6 @@ Não repita o mesmo tipo mais de 2 vezes seguidas. Toda troca de bloco tem trans
 - [ ] Efeito sonoro em cada evento visual importante (em média 8 a 15 por minuto; menos na comoção).
 - [ ] Nenhum texto quebrado em caixa de altura fixa; títulos numa linha.
 - [ ] Legenda oculta nas telas só de texto; nada sob a legenda.
+- [ ] Trilha só por `Trilha` (ducking automático; `atrasoVoz` se houver pré-roll).
+- [ ] Chamada de inscrição nos 3 momentos do vídeo (fim do bloco 1, meio, fim).
 - [ ] `qa-quadros.mjs` com 0 problemas + folha de contato olhada.

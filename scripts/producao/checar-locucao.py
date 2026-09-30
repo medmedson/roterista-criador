@@ -66,7 +66,7 @@ for a in arqs:
         # 5) frase de tema isolada ("Violência.", "E pandemia.", "Crianças e adolescentes.") — misturou idioma no SUAS aos 15 min
         # verbo presente = frase de efeito ("Faltava a lei.") costuma ir bem; sem verbo = rótulo solto, que falhou
         tem_verbo = re.search(r"\b(é|são|há|tem|foi|era|eram|está|vai|\w+(ou|ava|ia|am|em|ar|er|ir|iu|eu))\b", f, re.I)
-        if 1 <= len(palavras) <= 3 and not f.endswith("?") and f not in abertura[:1]:
+        if 1 <= len(palavras) <= 3 and f not in abertura[:1]:
             avisos.append(("MÉDIO" if (tem_verbo and len(palavras) == 3) else "ALTO", f"frase de tema solta: \"{f}\"", "fundir com a frase seguinte com introdução (ex.: 'Há também a violência: em 2025, …')"))
     for i in range(1, len(fs)):
         if len(re.findall(r"\w+", fs[i])) <= 2 and len(re.findall(r"\w+", fs[i - 1])) <= 3:

@@ -222,3 +222,10 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 
 - **AVC:** escrever direto (`AVC`), sem mapear no `siglas.json`. "a vê cê" foi reprovado. **Regra geral: não soletrar sigla à mão.**
 - **Revistas em inglês** (The Lancet, BMJ) no meio de frase longa: aprovadas como estão.
+
+## Voz acima da música, chamada de inscrição, movimento (30/09, tarde)
+
+- **`Trilha` com ducking automático**: a música desce para ≤ 0.12 enquanto a voz fala e depende de `useVideoConfig().id = BlocoNN` e do `cues.json`. Em projeto existente, copie `assets/producao-template-video/src/componentes/Trilha.tsx`. Em bloco com pré-roll, use `atrasoVoz`.
+- **`ChamadaInscricao`** (inscreva-se + sininho): obrigatória em 3 momentos de todo vídeo. Ver `13c`, seção 4b. O roteiro precisa trazer a frase da chamada.
+- **`Drift`**: zoom e deslize lento para cena de leitura ou mapa não ficar parada.
+- **Pergunta curta solta** ("Compra de voto?") também troca o idioma. Use "E a compra de voto?". O verificador agora checa perguntas curtas.

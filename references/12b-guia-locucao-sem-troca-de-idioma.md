@@ -24,6 +24,7 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 | SUS, ~7:33 | `AVC` soletrado à mão ("a vê cê") | leitura ruim | `AVC` escrito direto ("acidente vascular cerebral" também aprovado) |
 | SUAS | `TCU` soletrado à mão ("tê cê u") | leitura ruim | `TCU` escrito direto |
 | SUAS, ~11 min | `O SUS atende todos. O SUAS atende quem precisa.` | misturou idiomas | `O SUS atende todos, e o SUAS atende quem precisa.` |
+| Bolsa Família, 24:40 | `Compra de voto?` (pergunta curta solta) | português estranho | `E a compra de voto?` |
 | SUAS | `Funabem` | o usuário ouviu as opções | manter `Funabem` como está (aprovado) |
 | SUS, ~7:26 | `British Medical Journal`, `The Lancet`, `Lancet Public Health` no meio de frase longa | testado em 30/09: o usuário achou atual e proposta boas | nome em inglês é aceitável DENTRO de frase longa em português; em frase curta, evitar |
 

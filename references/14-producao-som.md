@@ -35,7 +35,7 @@ Cada trilha tem 96 a 100 s. O componente `Trilha` repete em loop quando precisa.
 <Efeito arquivo="sfx/carimbo.mp3" em={t(3) + 44} volume={0.6} duracao={15} />
 ```
 
-- Trilha sob a voz: volume 0.16 a 0.26 (cerca de −20 a −24 dB). Ambiência: 0.10 a 0.15.
+- Trilha: o `Trilha` já baixa sozinho para ≤ 0.12 enquanto a voz fala (ducking pelo `cues.json`). O `volume` pedido (0.16 a 0.30) vale nas pausas e cartelas. Ambiência: 0.10 a 0.15.
 - **`ate - de` precisa ser maior que `2 × fade`.** Se não for, o Remotion dá erro "inputRange must be strictly monotonically increasing".
 - Revelação: `riser` (30 a 45 frames), 0,5 a 1 s de silêncio, depois `impacto` e só então a informação.
 - Drama forte (um por ato): `impacto` + tremor do `Fundo` (translate) + `<Clarao>`.
