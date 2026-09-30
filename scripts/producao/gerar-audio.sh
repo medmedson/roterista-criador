@@ -16,7 +16,8 @@ fi
 BL="$@"; [ -z "$BL" ] && BL=$(ls "$P/locucao" | grep -E '^[0-9]{2}\.txt$' | sed 's/\.txt//')
 for n in $BL; do
   extra_var="VOZ_EXTRA_$n"; extra="${!extra_var:---rate=-5%}"
-  "$TTS" -v fr-FR-RemyMultilingualNeural $extra -f "$P/locucao/$n.txt" --write-media "$P/audio/$n.mp3" --write-subtitles "$P/audio/$n.srt" &
+  # até 3 tentativas: o serviço de voz às vezes devolve "No audio was received" (falha passageira)
+  ( for k in 1 2 3; do "$TTS" -v fr-FR-RemyMultilingualNeural $extra -f "$P/locucao/$n.txt" --write-media "$P/audio/$n.mp3" --write-subtitles "$P/audio/$n.srt" 2>/dev/null && [ -s "$P/audio/$n.mp3" ] && break; echo "bloco $n: tentativa $k falhou, repetindo"; sleep 5; done ) &
 done
 wait
 for n in $BL; do cp "$P/audio/$n.mp3" "$P/audio/$n.srt" "$P/video/public/audio/"; done
