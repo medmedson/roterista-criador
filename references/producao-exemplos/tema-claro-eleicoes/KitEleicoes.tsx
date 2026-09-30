@@ -356,8 +356,9 @@ export const LinhaFita: React.FC<{ marcos: { ano: string; titulo: string; f: num
   const desl = interpolate(f, [ult ? ult.f : 0, (ult ? ult.f : 0) + 24], [0, 1], { ...clamp, easing: suave });
   const anterior = Math.max(0, Math.min(total - largura, (vistos - 1.5) * passo + 60 - largura / 2 - passo / 2 + passo));
   const x = -(anterior + (alvo - anterior) * desl);
+  // data-corte-ok: a fita rola e recorta os marcos de propósito (sem isso o auditor acusa TEXTO_CORTADO)
   return (
-    <div data-foco="linha do tempo" style={{ opacity: o, width: largura, height: 300, overflow: "hidden", position: "relative" }}>
+    <div data-foco="linha do tempo" data-corte-ok style={{ opacity: o, width: largura, height: 300, overflow: "hidden", position: "relative" }}>
       <div style={{ position: "absolute", left: x, top: 0, width: total, height: 300 }}>
         <div style={{ position: "absolute", left: 0, right: 0, top: 130, height: 46, backgroundColor: c.branco, boxShadow: sombra, borderTop: `3px solid ${c.fio}`, borderBottom: `3px solid ${c.fio}` }} />
         {marcos.map((m, i) => {
