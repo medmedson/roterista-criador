@@ -59,6 +59,7 @@ Regras: mesma trilha nunca abre dois blocos seguidos; comoção = piano+cordas, 
 - Frases curtas, ritmo de telejornal. Pergunta-ponte no fim de cada bloco. Gancho de fato concreto nos primeiros 60 s.
 - Números, datas, horas e siglas por extenso ("vinte e sete vírgula nove milhões"; "bê pê cê" só se a normalização exigir).
 - **Abertura de bloco**: nunca começar com palavras soltas (a voz Remy troca de idioma); usar frase introdutória em português antes de qualquer lista. Ver também `12b-guia-locucao-sem-troca-de-idioma.md` (siglas isoladas, nomes estrangeiros).
+- **Chamada de inscrição** em 3 pontos (fim do B1, meio antes do ato de maior interesse, fim junto da tela final), cada uma com locução própria e cena `ChamadaInscricao`. Sem pergunta curta solta ("E a compra de voto?", não "Compra de voto?").
 - **Anos seguidos**: nunca "1990 e 2002" colados nem "em 1990 e sancionada em 1993". Use "de 1990 a 2002", "em 2022 e em 2023" ou reordene.
 - Tudo que é estimativa, amostra ou associação carrega a ressalva dentro da frase.
 - Citação literal entre aspas com autor, data e link; aparece em tela como documento com marca-texto.
