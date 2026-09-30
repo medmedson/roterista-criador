@@ -99,6 +99,41 @@ Nunca no meio de uma revelação, de um dado ou de um bloco de comoção.
 
 A narração acompanha com uma frase curta. Ela deve vir escrita no roteiro, e se não vier, peça à sessão de roteiro. Exemplo: "Se este documentário está te ajudando a entender o Brasil, inscreva-se no canal e ative o sininho para receber os próximos." Passe essa frase pelo `checar-locucao.py` como qualquer outra. Na legenda, a tela da chamada entra como só texto (ocultar).
 
+## 4c. Fim do vídeo (padrão do canal, em TODO vídeo)
+
+Conteúdo: `07-tela-final-e-creditos.md` (o roteiro traz "Tela de FONTES" e "Tela final (padrão)"). Montagem: componente pronto `componentes/FimDoVideo.tsx` (no template).
+
+**Ordem e tempos:**
+
+| Trecho | Duração | Som | Legenda |
+|---|---|---|---|
+| última fala do fecho (bloco final) | — | trilha de fecho | sim |
+| tela de FONTES (`TelaFontes`, 8–12 itens) | 12 s (`DUR_FONTES = 360`) | trilha de fecho baixa (0.16) | não |
+| tela final sozinha (linhas: fontes na descrição · serviço · veja também; créditos rolando; "Narração sintética · trilha e efeitos originais") | 4 s | trilha 0.12 | não |
+| chamada 3 (`ChamadaInscricao` por cima da tela final, com a voz `cta3.mp3`) | voz + 2 s (mín. 250 frames) | whoosh, clique | não |
+| som-assinatura do tema, 2 s de silêncio, fade (branco no claro, preto nos escuros) | 3 s | assinatura uma vez | não |
+
+**Código (Root.tsx):**
+```tsx
+import { comFim, ConfigFim, duracaoFim } from "./componentes/FimDoVideo";
+const FIM: ConfigFim = {
+  paleta: { fundo: c.papel, cartao: c.branco, texto: c.tinta, secundario: c.cinza, destaque: c.azul, marca: c.azul, sombra },
+  fontes: [["Constituições", "Constituição Federal de 1988 e anteriores (Planalto)"], /* … 8 a 12 do roteiro */],
+  linhas: ["Fontes oficiais e estudos na descrição.", "<linha de serviço do tema>", "Veja também: “<vídeo 1>” e “<vídeo 2>”."],
+  creditos: [], // uma linha por foto usada: "descrição · autor · licença"; vazio = sem fotos
+  trilha: "sfx/<trilha-de-fecho>.mp3",
+  assinatura: "sfx/<som-assinatura>.mp3", // bip-confirma, ding-senha, toque-central, diapasao…
+  cta: { audio: "audio/cta3.mp3", segundos: 11.3 }, // duração real da voz (ffprobe)
+  fadePara: "branco", // "preto" nos temas escuros
+};
+// o último bloco recebe o fim inteiro; a chamada 3 NÃO usa comChamada
+BlocoNN: auditado(comFim(BlocoNN, DURACAO_NN, FIM)),
+<Composition id="BlocoNN" durationInFrames={DURACAO_NN + duracaoFim(FIM)} … />
+```
+- As chamadas 1 e 2 continuam com `comChamada(Bloco, dur, "depois", "audio/ctaN.mp3", duracaoChamada(seg))` (depois do B1 e antes do capítulo mais forte).
+- O último bloco termina na frase conclusiva; não repita o som-assinatura no fim do bloco se ele já toca no fim do vídeo (uma vez só é o ideal).
+- Conferir com stills: `npx remotion still BlocoNN x.jpg --frame=<fim-520>` (tela final) e `--frame=<fim-300>` (chamada por cima).
+
 ## 5. Layout preciso (sem quebra de linha e sem vazamento)
 
 - **Texto dentro de caixa com altura fixa (etiqueta, visor, placa, botão) nunca quebra linha.**
@@ -121,4 +156,5 @@ A narração acompanha com uma frase curta. Ela deve vir escrita no roteiro, e s
 - [ ] Legenda oculta nas telas só de texto; nada sob a legenda.
 - [ ] Trilha só por `Trilha` (ducking automático; `atrasoVoz` se houver pré-roll).
 - [ ] Chamada de inscrição nos 3 momentos do vídeo (fim do bloco 1, meio, fim).
+- [ ] Fim do vídeo no padrão (FONTES → tela final com créditos e aviso → chamada 3 → assinatura → fade) via `FimDoVideo.tsx`.
 - [ ] `qa-quadros.mjs` com 0 problemas + folha de contato olhada.

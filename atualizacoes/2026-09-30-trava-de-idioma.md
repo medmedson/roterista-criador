@@ -238,3 +238,11 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
   - O auditor mede `CORTADO` sem a câmera e acusa `TEXTO_CORTADO` quando texto encosta na borda real; deixe 45 px de folga para texto.
 - **Novo `scripts/producao/parado-video.py`.** Varre um mp4 pronto e lista os trechos parados, sem precisar rodar o QA bloco a bloco.
 - **"Capítulo", nunca "ato".** As cartelas dizem "CAPÍTULO II", e o roteiro usa "# CAPÍTULO I — NOME" e "tabela de capítulos". Regra do usuário.
+
+## Vídeo único, fim padrão e guia "fazer igual" (30/09/2026, noite)
+
+- **Vídeo sempre único e completo por tema.** Nunca Parte 1/Parte 2. Eleições foi reunido em `projetos/eleicoes` (37:49).
+- **Bloco 1:** apresenta o tema e diz "Os dados vêm de fontes seguras… Todas as fontes estão no final do vídeo." Sem ressalvas do tipo "quando o documento não permite afirmar".
+- **Fim padrão** (`componentes/FimDoVideo.tsx`, `13c` seção 4c, `07-tela-final-e-creditos.md`): FONTES → tela final com créditos e aviso de voz sintética → chamada 3 por cima → som-assinatura → silêncio → fade.
+- **Guia novo `17-producao-como-fazer-igual.md`:** leitura fluida, método de animação, interações com a fala, busca de imagens na web, entrega.
+- `render-final.sh` com `--timeout=120000`; `gerar-audio.sh` repete a voz até 3 vezes.

@@ -3,7 +3,8 @@
 ## Preferências do usuário (confirmadas em 4 vídeos)
 
 - Narração com tom de telejornal (voz Remy). Manter a duração que a voz der, sem forçar corte.
-- Estilo: cortiça, recortes, fio vermelho, mapas animados com rotas (o usuário adorou) e muito elemento animado.
+- Estilo: cada tema tem identidade própria (cortiça escura em SUS/BF/SUAS; claro/clean em Eleições; noturno no SAMU; "jazida" em Terras Raras), sempre com mapas animados e muito elemento animado.
+- Vídeo sempre único e completo por tema, nunca em partes.
 - Trilha em quase todo o vídeo, com suspense e drama nos momentos certos.
 - Sem legenda em tela só de texto. Legenda nunca sobre o ponto focal.
 - Carimbo só quando faz sentido e nunca sobre texto.
@@ -14,7 +15,8 @@
 
 ## Imagens e licenças
 
-- Só Wikimedia Commons. Confira a licença pela API antes de usar:
+- Passo a passo completo da busca na web: `17-producao-como-fazer-igual.md`, seção 4. Baixar exige o OK do usuário no chat.
+- Wikimedia Commons é a fonte principal. Confira a licença pela API antes de usar:
   `https://commons.wikimedia.org/w/api.php?action=query&titles=File:<nome>&prop=imageinfo&iiprop=extmetadata&format=json`
   (campos LicenseShortName, Artist, Credit). Baixe com `Special:FilePath/<nome>?width=1600` e um User-Agent identificado.
 - Agência Brasil: só do acervo "memória". Não use Fotos Públicas.

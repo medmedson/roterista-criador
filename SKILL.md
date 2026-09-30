@@ -9,6 +9,12 @@ Sessão de roteiro **só escreve texto**. Não edita vídeo, áudio, Remotion ne
 
 Saída: `projetos/<tema>/roteiro.md` (+ `projetos/<tema>/apuracao/*.md` com notas de pesquisa e trechos citados).
 
+> **Regra fixa (pedido do usuário, 2026-09-30): todo tema é UM vídeo completo, nunca dividido em "Parte 1 / Parte 2".** O roteiro não tem fecho de parte, abertura de parte nem selo de parte; tem 3 chamadas de inscrição (fim do B1, meio antes do capítulo de maior interesse, fim), um título, uma capa e uma descrição.
+
+> **Regra do B1 (pedido do usuário, 2026-09-30):** o bloco 1 explica o tema. Diz que os dados vêm de fontes seguras (documentos oficiais e estudos) e que as fontes estão no final do vídeo. Sem falas de ressalva do tipo "quando o documento não permite afirmar, dizemos" nem "nem tudo que se diz vem com fonte". A produção põe uma tela de FONTES no fim, antes da última chamada; o roteiro traz a seção "Tela de FONTES" com 8 a 12 fontes principais.
+
+> **Fim do vídeo (padrão do canal):** fala final → tela de FONTES → tela final (linha de serviço, "veja também", créditos de imagens, "Narração sintética · trilha e efeitos originais") → chamada 3 → som-assinatura → fade. Detalhes e textos-modelo em `references/07-tela-final-e-creditos.md`. O roteiro traz as seções "Tela de FONTES" e "Tela final (padrão)".
+
 ## 0. Pacote portátil (instalar em outra máquina)
 
 Esta pasta é autossuficiente. Copiar `~/.claude/skills/apuracao-oficial/` inteira para a mesma pasta da outra máquina e rodar:
@@ -28,6 +34,7 @@ Ele confere Node, Python, ffmpeg, Chrome, instala `marca/` (gerador de capas + f
 | `references/04-capas-e-marca.md` | marca, capas por código, Chrome headless, checagem visual |
 | `references/05-publicacao.md` | título, descrição, capítulos reais, tags, comentário fixado |
 | `references/06-handoff-producao.md` | mensagem à sessão de produção e resumo do pipeline |
+| `references/07-tela-final-e-creditos.md` | **padrão do fim do vídeo**: tela de fontes, tela final, créditos de imagens, aviso de voz sintética, chamada 3, descrição |
 | `references/producao-exemplos/` | exemplos de componentes Remotion (mantidos pela sessão de produção) |
 | `scripts/` | `setup.sh`, `render-svg.sh`, `checar-fontes.sh` |
 | `assets/` | `marca/` (fontes e geradores), `producao-ferramentas/` (Python) |
@@ -125,14 +132,15 @@ Cada bloco do roteiro traz, além da locução:
 
 Tudo por código e gratuito: edge-tts (voz Remy) → Remotion (React) → ffmpeg; trilhas/efeitos por síntese numpy; fotos só Commons com licença conferida. Ler na ordem:
 
+- `references/17-producao-como-fazer-igual.md` — **ler primeiro**: o jeito exato de trabalhar — texto para leitura fluida e natural, método das animações (tempos presos à voz, `em(i, trecho)`, movimento, ciclo de QA), interações (a tela reage à fala), pesquisa de imagens na web com licença, entrega. Vídeo sempre único e completo por tema.
 - `references/10-producao-visao-geral.md` — pastas, sequência completa de comandos, ordem de trabalho com o usuário.
 - `references/11-producao-setup.md` — ferramentas e versões testadas, instalação em máquina nova, disco, CPU, caffeinate.
 - `references/12b-guia-locucao-sem-troca-de-idioma.md` — **obrigatório para roteiro e produção**: como escrever e gerar a locução sem a voz trocar de idioma (casos reais e checklist).
 - `references/12-producao-narracao.md` — voz, normalizador, siglas e **pronúncias aprovadas** (béts, IBGE, Butantã…), pausas, legendas.
-- `references/13c-producao-direcao-audiovisual.md` — **obrigatório antes do 1º bloco**: tela sempre viva (sem lacunas, nada parado > 6 s), informação visual para todo dado, transições com som, trilha e efeitos por emoção (suspense, drama, comoção…), layout preciso sem quebra de linha em caixa fixa, checklist do bloco.
+- `references/13c-producao-direcao-audiovisual.md` — **obrigatório antes do 1º bloco**: tela sempre viva (sem lacunas, nada parado > 6 s), informação visual para todo dado, transições com som, trilha e efeitos por emoção (suspense, drama, comoção…), layout preciso sem quebra de linha em caixa fixa, chamadas de inscrição (4b), **fim do vídeo padrão com `FimDoVideo.tsx` (4c)**, checklist do bloco.
 - `references/13-producao-cenas.md` + `13b-producao-catalogo-componentes.md` — arquitetura Remotion, padrão de tempo `t()`/`r()`, regras visuais, marcas de auditoria, kits existentes; exemplos em `references/producao-exemplos/`.
 - `references/14-producao-som.md` — geradores de trilha/efeito, níveis, revelação, mixagem.
 - `references/15-producao-qa-render.md` — `qa-quadros.mjs` (0 problemas + folha de contato), render retomável, entrega.
 - `references/16-producao-regras-e-armadilhas.md` — preferências do usuário, licenças, tabela de erros já vividos e correções.
 
-Scripts: `scripts/producao/` (verificar-ambiente, novo-projeto, extrair-locucao, **checar-locucao** (trava de idioma antes da voz), gerar-audio, pausas, amostra-pronuncia (amostras em ~/Downloads/<assunto>-opcoes), narracao-completa (áudio inteiro para o usuário revisar ANTES das cenas), capitulos, render-final). Modelo de projeto: `assets/producao-template-video/` (package-lock travado; `npm ci`). Geradores de som: `assets/producao-ferramentas/` + `assets/producao-sfx-base/`.
+Scripts: `scripts/producao/` (verificar-ambiente, novo-projeto, extrair-locucao, **checar-locucao** (trava de idioma antes da voz), gerar-audio, pausas, amostra-pronuncia (amostras em ~/Downloads/<assunto>-opcoes), narracao-completa (áudio inteiro para o usuário revisar ANTES das cenas), capitulos, render-final, dividir-serie (só se o usuário pedir série; o padrão é vídeo único)). Modelo de projeto: `assets/producao-template-video/` (package-lock travado; `npm ci`). Geradores de som: `assets/producao-ferramentas/` + `assets/producao-sfx-base/`.

@@ -19,3 +19,6 @@ Entregue no fim do roteiro e, depois do render, em arquivos: `render/descricao-y
 - Não afirmar na descrição nada que o vídeo não sustenta.
 - Não usar logotipo de órgão público nem imitar veículo real.
 - Fotos de pessoas só com licença conferida; créditos completos.
+
+## Fim do vídeo e descrição padrão
+O padrão completo (ordem exata do fim, tela de fontes, tela final, créditos, aviso de voz sintética, descrição em 8 partes) está em `07-tela-final-e-creditos.md`.

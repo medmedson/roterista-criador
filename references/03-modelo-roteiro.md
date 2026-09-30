@@ -45,6 +45,10 @@ Regras: mesma trilha nunca abre dois blocos seguidos; comoção = piano+cordas, 
 **Assets:** fotos (link, licença, crédito) + alternativa sem foto
 (repete B2..Bn; contar palavras por bloco e ajustar tempos)
 
+## Tela de FONTES (fim do vídeo, antes da última chamada de inscrição)  (8 a 12 fontes; ver references/07)
+## Tela final (padrão)  (linha de serviço, veja também, créditos previstos, "Narração sintética · trilha e efeitos originais"; ver references/07)
+## Tela de FONTES (fim do vídeo, antes da última chamada de inscrição)   (8 a 12 fontes; ver 07-tela-final-e-creditos.md)
+## Tela final (padrão)   (linha de serviço, "veja também", créditos previstos, "Narração sintética · trilha e efeitos originais"; ver 07)
 ## Escaleta de produção (resumo por bloco)  | Bloco | Emoção | Trilha | Elemento novo | Carimbos | Drama |
 ## Direção de locução   (ritmo, pausas, siglas por extenso, nomes, ressalvas que não se aceleram)
 ## Direção sonora
