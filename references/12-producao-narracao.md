@@ -37,7 +37,8 @@ Depois de normalizar, confira o que ele imprime em "restou:" (números ou siglas
 | Funabem | manter `Funabem` | aprovada como está (30/09) |
 | Collor | `Kólor` | |
 | siglas lidas como palavra (SUS, SUAS, CRAS, CREAS, LOAS, PIB) | `Sus`, `Suas`, `Cras`… | em maiúsculas a voz soletra |
-| siglas soletradas (BPC, INSS, TCU, STF) | `bê pê cê`, `i ene ésse ésse`, `tê cê u`, `ésse tê éfe` | |
+| TCU | deixar `TCU` (sem mapear) | "tê cê u" reprovado (30/09) |
+| siglas ainda soletradas (BPC, STF) | `bê pê cê`, `ésse tê éfe` | sem queixa até agora, mas suspeitas: testar a forma direta |
 | numeral romano de evento | `"IV Conferência": "quarta Conferência"` | nunca mapear `IV` sozinho: "décima quarta" vira "décima IV" na legenda |
 
 Na dúvida, use `bash scripts/producao/amostra-pronuncia.sh <canal> saida.mp3 "frase A" "frase B" …`. Mande o arquivo ao usuário e pergunte o número da versão. Teste sempre dentro de uma frase de contexto, não com a palavra sozinha.

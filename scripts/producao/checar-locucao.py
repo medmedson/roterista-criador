@@ -51,7 +51,7 @@ for a in arqs:
                 avisos.append(("MÉDIO", f"sigla não testada: {s} em \"{f[:80]}\"", "gerar amostra (amostra-pronuncia.sh) e mapear no siglas.json se preciso"))
         # 3b) sigla soletrada à mão
         for m in SOLETRADA.finditer(f):
-            ok = re.sub(r"\s+é$", "", m.group(0)) in {"bê pê cê", "tê cê u", "ésse tê éfe", "cê gê u", "a vê cê", "agá i vê", "cê pê í", "u bê ésse"}
+            ok = re.sub(r"\s+é$", "", m.group(0)) in {"bê pê cê", "ésse tê éfe", "cê gê u", "a vê cê", "agá i vê", "cê pê í", "u bê ésse"}
             avisos.append(("MÉDIO" if ok else "ALTO", f"sigla soletrada à mão '{m.group(0)}' em \"{f[:80]}\"", "gerar amostras: sigla direta, nome por extenso ou só o nome (ex.: 'a Legião'); soletrar à mão já falhou com INSS e LBA"))
         # 4) palavras em inglês/estrangeiras
         for m in INGLES.finditer(f):
@@ -63,7 +63,11 @@ for a in arqs:
             # nomes próprios só com w/k/y (Sarney, Oswaldo, Darcy) a voz lê bem; só avisa grafia forte de inglês
             if forte or (re.search(r"[wyk]", w, re.I) and not w[0].isupper()):
                 avisos.append(("MÉDIO", f"grafia de outro idioma '{w}' em \"{f[:80]}\"", "conferir: nome estrangeiro? testar amostra ou adaptar"))
-        # 5) frase de 1–2 palavras isolada logo após outra curta (sequência telegráfica)
+        # 5) frase de tema isolada ("Violência.", "E pandemia.", "Crianças e adolescentes.") — misturou idioma no SUAS aos 15 min
+        # verbo presente = frase de efeito ("Faltava a lei.") costuma ir bem; sem verbo = rótulo solto, que falhou
+        tem_verbo = re.search(r"\b(é|são|há|tem|foi|era|eram|está|vai|\w+(ou|ava|ia|am|em|ar|er|ir|iu|eu))\b", f, re.I)
+        if 1 <= len(palavras) <= 3 and not f.endswith("?") and f not in abertura[:1]:
+            avisos.append(("MÉDIO" if (tem_verbo and len(palavras) == 3) else "ALTO", f"frase de tema solta: \"{f}\"", "fundir com a frase seguinte com introdução (ex.: 'Há também a violência: em 2025, …')"))
     for i in range(1, len(fs)):
         if len(re.findall(r"\w+", fs[i])) <= 2 and len(re.findall(r"\w+", fs[i - 1])) <= 3:
             avisos.append(("MÉDIO", f"sequência telegráfica: \"{fs[i-1]} {fs[i]}\"", "juntar em uma frase"))

@@ -21,6 +21,8 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 | SUS e Bolsa Família | `IBGE` como "i bê gê é" | soava "ibgê" | `IBGE` escrito direto, dentro de frase normal |
 | SUS | `Butantan` | sotaque estranho | `Butantã` |
 | SUAS | `LBA` soletrada à mão ("éle bê á") | leitura ruim | `LBA` escrita direto |
+| SUAS | `TCU` soletrado à mão ("tê cê u") | leitura ruim | `TCU` escrito direto |
+| SUAS, ~11 min | `O SUS atende todos. O SUAS atende quem precisa.` | misturou idiomas | `O SUS atende todos, e o SUAS atende quem precisa.` |
 | SUAS | `Funabem` | o usuário ouviu as opções | manter `Funabem` como está (aprovado) |
 | SUS, ~7:26 (suspeita) | `British Medical Journal` | nome em inglês muda o sotaque | preferir "a revista médica britânica BMJ" |
 
@@ -28,7 +30,8 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 
 1. **Não abra bloco nem parágrafo com palavras ou frases soltas.** Listas como "Esmola. Preguiça." ou "Violência." sozinhas no início de um trecho são o gatilho mais forte. Ponha antes uma frase introdutória em português ("As acusações são conhecidas: …", "Há também a violência: …").
 2. **Não isole sigla em frase curta.** "Conhece o INSS." sozinha falha. Junte com a frase vizinha: "Você conhece o SUS e conhece o INSS."
-3. **Frases de efeito curtas** ("Ainda não é lei.", "O favor virava direito.") funcionam quando vêm DEPOIS de uma frase longa em português. Não use como primeira frase do bloco.
+3. **Frase de tema solta** ("Violência.", "Calamidade.", "E pandemia.", "Crianças e adolescentes.") misturou idiomas no SUAS aos 15 min. Funda com a frase seguinte usando uma introdução ("Há também a violência: em 2025, …").
+4. **Frases de efeito curtas** ("Ainda não é lei.", "O favor virava direito.") funcionam quando vêm DEPOIS de uma frase longa em português. Não use como primeira frase do bloco.
 4. **Nomes estrangeiros:** use o equivalente em português ("revista médica britânica", "Banco Mundial"). Se o nome original for essencial, ponha dentro de uma frase longa em português.
 5. **Siglas:** explique na primeira menção dentro de frase completa. Evite duas siglas seguidas.
 6. **Anos em par:** "de 1990 a 2002", nunca "1990 e 2002".
@@ -51,9 +54,9 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 
 1. **Siglas no `locucao/siglas.json`:**
    - siglas que se leem como palavra (SUS, SUAS, CRAS, LOAS, PIB): `Sus`, `Suas`, `Cras`…;
-   - INSS, IBGE e LBA: deixar **sem mapear** (escritas direto);
-   - soletrar à mão ("i ene ésse ésse", "i bê gê é", "éle bê á") piorou nos três casos;
-   - outras siglas soletradas (BPC, TCU, STF: "bê pê cê", "tê cê u", "ésse tê éfe") funcionaram bem no meio de frase. Se o usuário apontar problema, teste a forma direta.
+   - INSS, IBGE, LBA e TCU: deixar **sem mapear** (escritas direto);
+   - soletrar à mão ("i ene ésse ésse", "i bê gê é", "éle bê á", "tê cê u") piorou em todos os casos testados;
+   - siglas ainda soletradas sem queixa (BPC "bê pê cê", STF "ésse tê éfe") são suspeitas. Na primeira vez em um projeto, gere a amostra da forma direta e deixe o usuário escolher.
 2. **Antes de gerar os blocos, faça um teste de abertura:**
    - pegue a primeira frase de cada bloco e cada frase curta com sigla;
    - gere amostras com `scripts/producao/amostra-pronuncia.sh`, sempre com a frase seguinte junto, para dar contexto;

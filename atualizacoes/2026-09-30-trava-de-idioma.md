@@ -199,3 +199,6 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 - **Funabem:** manter como está (aprovado).
 - O `checar-locucao.py` agora aponta sigla soletrada à mão como ALTO. Exceções já usadas sem queixa: bê pê cê, tê cê u, ésse tê éfe, cê gê u, a vê cê, agá i vê, cê pê í, u bê ésse, que ficam como MÉDIO.
 - Frases curtas com sigla em sequência ("O SUS atende todos. O SUAS atende quem precisa.") misturaram idiomas por volta dos 11 min do SUAS. Junte numa frase só; as amostras estão em análise com o usuário.
+- **TCU:** escrever direto (`TCU`). "tê cê u" foi reprovado. Remova `"TCU"` do `siglas.json`.
+- **Frases de tema soltas** ("Violência.", "Calamidade.", "E pandemia.") misturam idiomas. O verificador agora aponta essas frases como ALTO. Funda com a frase seguinte ("Há também a violência: …").
+- **Trecho de ~11 min do SUAS:** aprovado "O SUS atende todos, e o SUAS atende quem precisa." numa frase só.
