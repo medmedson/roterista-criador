@@ -58,6 +58,8 @@ Conteúdo em três grupos, nesta ordem. O roteiro traz a seção **"Tela final (
 ## 4. Som e tempo
 
 - Depois da última fala, a trilha de fecho continua por baixo de fontes e créditos (−24 dB) e desce em fade; o **som-assinatura do tema** toca uma vez (diapasão, bip-confirma, toque-central, ding-senha etc.) e vem **2 s de silêncio**.
+- **O som-assinatura do fim toca uma vez só.** Se a última cena do fecho já traz o bip/diapasão/toque, o fim não repete: basta um dos dois. No roteiro, marque onde ele toca.
+- Componente da produção: `FimDoVideo.tsx` (`TelaFontes`, `TelaFinal`, `comFim`), ver 13c seção 4c e `17-producao-como-fazer-igual.md`. Tempos típicos da produção: fontes 12 s, tela final 4 s, chamada 3 por cima (voz + 2 s), assinatura, silêncio e fade.
 - Duração típica: fontes 10–12 s + tela final 12–20 s + chamada 5 s.
 - Nenhuma legenda, nenhuma locução extra durante fontes e créditos.
 

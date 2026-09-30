@@ -15,7 +15,7 @@ for n in $BLOCOS; do
 done
 cd ../render
 ls blocos/bloco*.mp4 | sed "s/^/file '/; s/$/'/" > lista.txt
-ffmpeg -v error -y -f concat -safe 0 -i lista.txt -c copy junto.mp4
-ffmpeg -v error -y -i junto.mp4 -c:v copy -af "loudnorm=I=-14:TP=-1.5:LRA=11" -c:a aac -b:a 192k -ar 48000 "$NOME-documentario-final.mp4" && rm junto.mp4
+# uma passada só (sem arquivo intermediário: economiza o espaço de um vídeo inteiro no disco)
+ffmpeg -v error -y -f concat -safe 0 -i lista.txt -c:v copy -af "loudnorm=I=-14:TP=-1.5:LRA=11" -c:a aac -b:a 192k -ar 48000 "$NOME-documentario-final.mp4"
 echo "$(date +%H:%M) PRONTO"
 ls -la "$NOME-documentario-final.mp4"
