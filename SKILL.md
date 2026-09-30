@@ -126,6 +126,7 @@ Tudo por código e gratuito: edge-tts (voz Remy) → Remotion (React) → ffmpeg
 - `references/11-producao-setup.md` — ferramentas e versões testadas, instalação em máquina nova, disco, CPU, caffeinate.
 - `references/12b-guia-locucao-sem-troca-de-idioma.md` — **obrigatório para roteiro e produção**: como escrever e gerar a locução sem a voz trocar de idioma (casos reais e checklist).
 - `references/12-producao-narracao.md` — voz, normalizador, siglas e **pronúncias aprovadas** (béts, IBGE, Butantã…), pausas, legendas.
+- `references/13c-producao-direcao-audiovisual.md` — **obrigatório antes do 1º bloco**: tela sempre viva (sem lacunas, nada parado > 6 s), informação visual para todo dado, transições com som, trilha e efeitos por emoção (suspense, drama, comoção…), layout preciso sem quebra de linha em caixa fixa, checklist do bloco.
 - `references/13-producao-cenas.md` + `13b-producao-catalogo-componentes.md` — arquitetura Remotion, padrão de tempo `t()`/`r()`, regras visuais, marcas de auditoria, kits existentes; exemplos em `references/producao-exemplos/`.
 - `references/14-producao-som.md` — geradores de trilha/efeito, níveis, revelação, mixagem.
 - `references/15-producao-qa-render.md` — `qa-quadros.mjs` (0 problemas + folha de contato), render retomável, entrega.

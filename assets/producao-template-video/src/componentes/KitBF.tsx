@@ -91,8 +91,8 @@ export const CartaoPrograma: React.FC<{ entra: number; passa?: number; valor?: s
         <div style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: largura * 0.045, letterSpacing: 3, color: "#ffffff", maxWidth: "48%", lineHeight: 1.2 }}>{texto}</div>
       </div>
       {passa !== undefined ? (
-        <div style={{ width: largura * 0.8, height: 110, borderRadius: 16, backgroundColor: "#1d1d1f", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 16px 30px rgba(0,0,0,0.7)", opacity: interpolate(frame, [passa - 20, passa - 10], [0, 1], clamp) }}>
-          <div style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 56, color: "#7CFC9A", opacity: frame >= passa + 22 ? 1 : 0 }}>{valor ?? "APROVADO"}</div>
+        <div style={{ minWidth: largura * 0.8, height: 110, padding: "0 36px", boxSizing: "border-box", borderRadius: 16, backgroundColor: "#1d1d1f", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 16px 30px rgba(0,0,0,0.7)", opacity: interpolate(frame, [passa - 20, passa - 10], [0, 1], clamp) }}>
+          <div style={{ fontFamily: fontes.rotulo, fontWeight: 700, fontSize: 56, whiteSpace: "nowrap", color: "#7CFC9A", opacity: frame >= passa + 22 ? 1 : 0 }}>{valor ?? "APROVADO"}</div>
         </div>
       ) : null}
     </div>

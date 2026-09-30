@@ -19,6 +19,8 @@ O script renderiza 1 a cada 6 quadros com `inputProps {qa: true}`. Em cada quadr
 | VAZIO | nenhum elemento inteiro visível (ex.: começo de parte com `entra` > 0) | fazer algo aparecer já no quadro 0 (`entra={-6}`) ou `data-pausa-ok` se o vazio for proposital |
 | TRANSBORDA | texto vaza da própria caixa na horizontal | `whiteSpace: nowrap` com largura maior, ou texto menor |
 | TEXTO_CORTADO | texto cortado por `overflow: hidden` ou `foreignObject` | aumentar a caixa ou trocar `foreignObject` por `<text>` SVG |
+| TRANSBORDA (vertical) | texto quebrou linha e saiu da caixa com fundo pintado (ex.: visor "R$ 13,04 BI · SET/2026") | `whiteSpace: nowrap` + caixa com `minWidth`/`padding`; encurtar texto |
+| PARADO | mais de 6 s sem mudança visível na tela (`qa-parado.py`) | adicionar elemento amarrado à fala, zoom/drift lento, marca-texto que avança (ver `13c`) |
 
 Regra: só entregue o bloco com **0 problemas** e depois de olhar a folha de contato. A auditoria não vê várias coisas, e a folha pega:
 - elemento que nunca aparece (erro de frame relativo em Sequence aninhada);

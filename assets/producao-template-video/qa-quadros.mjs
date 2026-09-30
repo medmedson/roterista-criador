@@ -47,6 +47,14 @@ for (const bloco of blocos) {
       avisos.get(k).push(Number(frame));
     },
   });
+  // Trechos PARADOS: mais de 6 s sem mudança visível na tela (o usuário quer vídeo sempre animado)
+  try {
+    const parado = execFileSync("python3", ["qa-parado.py", tmp, String(PASSO), String(composition.fps), "6"], { encoding: "utf8" });
+    for (const l of parado.split("\n").filter(Boolean)) {
+      const [, ini, fim, seg] = l.split("|");
+      avisos.set(`PARADO|${seg} s sem mudança na tela`, [Number(ini), Number(fim)]);
+    }
+  } catch {}
   fs.rmSync(tmp, { recursive: true, force: true });
 
   const linhas = [...avisos.entries()]

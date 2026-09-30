@@ -207,3 +207,15 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 
 - **Revisão da narração antes das cenas:** `scripts/producao/narracao-completa.sh <canal> <tema>` gera `~/Downloads/<tema>-narracao/` com o áudio completo, os blocos separados e um índice por minuto. O usuário ouve e aponta os minutos com problema. Só depois de aprovado começam as cenas e o render.
 - **Amostras:** `scripts/producao/amostra-pronuncia.sh <canal> <assunto> "A-atual|…" "B-…|…"` grava em `~/Downloads/<assunto>-opcoes/` (um arquivo por opção + todas em sequência).
+
+## Direção audiovisual e layout (30/09)
+
+- Novo guia obrigatório: `references/13c-producao-direcao-audiovisual.md`. Ele cobre:
+  - tela sempre viva, sem lacunas;
+  - informação visual para todo dado;
+  - transições com som;
+  - trilha, efeitos e ambiência por emoção;
+  - layout preciso.
+- O QA agora aponta **PARADO**: mais de 6 s sem mudança na tela, via `qa-parado.py`. O arquivo tem de estar na pasta `video/` de cada projeto, e o `qa-quadros.mjs` chama esse script.
+- A auditoria agora pega **texto que quebra linha e sai da caixa**: TRANSBORDA vertical. Caixa de altura fixa exige `whiteSpace: nowrap` e `minWidth` com `padding`.
+- Em projetos já existentes, copie `assets/producao-template-video/{qa-parado.py,qa-quadros.mjs,src/componentes/Auditoria.tsx,src/componentes/KitBF.tsx}` para a pasta `video/`.

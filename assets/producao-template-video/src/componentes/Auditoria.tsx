@@ -85,6 +85,16 @@ const Auditor: React.FC = () => {
             const rp = no.parentElement.getBoundingClientRect();
             const tol = 6 * escala;
             if (rt.width > 0 && (rt.right > rp.right + tol || rt.left < rp.left - tol)) vaza = true;
+            // Vertical: texto que quebrou linha e saiu da caixa visível (fundo pintado) que o contém
+            for (let a: Element | null = no.parentElement; a && !vaza; a = a.parentElement) {
+              const bg = getComputedStyle(a).backgroundColor;
+              if (bg && bg !== "transparent" && !/rgba\(\d+, \d+, \d+, 0\)/.test(bg)) {
+                const ra = a.getBoundingClientRect();
+                if (rt.height > 0 && (rt.bottom > ra.bottom + tol || rt.top < ra.top - tol)) vaza = true;
+                break;
+              }
+              if (a === el) break;
+            }
           }
           if (vaza) console.log(`QA|${frame}|TRANSBORDA|${nome}`);
           // Texto cortado por uma caixa que recorta (foreignObject ou overflow hidden/clip)

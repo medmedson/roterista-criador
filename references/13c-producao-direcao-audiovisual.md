@@ -1,0 +1,83 @@
+# Produção: direção audiovisual (obrigatória em todo bloco)
+
+O usuário quer um **mini documentário vivo**: a tela muda o tempo todo, o som acompanha a emoção, e todo dado vira informação visual. Vídeo com lacunas sem animação, tela parada, trilha ausente ou texto quebrado é refeito. Leia este guia antes de escrever o primeiro bloco e confira o checklist no fim antes do QA.
+
+## 1. Tela sempre viva (sem lacunas)
+
+- **Toda fala tem um visual próprio.** Cada fala do `.srt` entra na tela como pelo menos um elemento novo ou uma mudança visível: número que conta, barra que cresce, ponto que acende, mapa que ganha rota, etiqueta que entra, câmera que se move. Nunca deixe duas falas seguidas com a mesma tela parada.
+- **Nada fica parado mais de 6 s.** O `qa-quadros.mjs` aponta `PARADO` quando a tela passa de 6 s sem mudança visível.
+  - Documento e citação podem segurar de 3 a 6 s, mas com movimento lento: zoom de 1,00 → 1,06, deslize de 20–40 px, ou marca-texto que avança.
+  - Depois de um número animado, segure 2 a 3 s e já entre o próximo elemento.
+- **Informação visual sempre que puder.** Todo número falado aparece na tela:
+  - como contador, barra, série, pizza ou pontos (1 ponto = N pessoas);
+  - todo lugar vira mapa com destaque ou rota;
+  - toda data vira folhinha ou linha do tempo;
+  - toda instituição, lei ou estudo vira recorte, documento com marca-texto ou etiqueta com a fonte;
+  - toda comparação vira duas colunas, balança ou tubos.
+- **Interatividade visual:** os elementos reagem à fala.
+  - Uma coisa acende quando é citada, o número conta enquanto é dito, o ponto do mapa pulsa no nome da cidade, o contador troca na virada da frase.
+  - Use `r(i)` (início da fala i) para amarrar cada entrada à palavra certa.
+  - Evite animação que roda sozinha sem relação com o que a voz diz.
+- **Movimento de fundo:** em cena longa, use `Poeira`, grão da `Pelicula`, drift lento da câmera (`Camera`/`enquadra`) ou luz que varia (`Luzes`), para a tela nunca congelar.
+
+## 2. Transições (entre cenas e entre blocos)
+
+Escolha pelo sentido narrativo e case sempre com um efeito sonoro:
+
+| Transição | Quando | Como (componente) | Som |
+|---|---|---|---|
+| corte seco | choque, revelação, mudança brusca | troca de `Sequence` | `impacto` ou silêncio |
+| fusão / fade | passagem de tempo, luto, reflexão | `Saida tipo="fade"` (10–24 frames) | trilha continua |
+| chicote | mudança rápida de assunto | `Saida tipo="chicote"` (8–12 frames) | `whoosh` |
+| zoom-through | entrar num documento ou objeto | `Saida tipo="zoom"` | `whoosh` |
+| sépia | ida ao passado | `Saida tipo="sepia"` ou filtro no `Fundo` | `papel-virar` |
+| flash | drama, virada | `Clarao` (branco ou vermelho) + tremor do `Fundo` | `impacto` + `sting` |
+| preto + cartela | fim de ato | preto (`data-pausa-ok`) + cartela "ATO N" | `sting` |
+
+Não repita o mesmo tipo mais de 2 vezes seguidas. Toda troca de bloco tem transição.
+
+## 3. Som: trilha de fundo + efeitos + ambiência
+
+- **Trilha de fundo em quase todo o vídeo**, sob a voz (volume 0.16 a 0.26). Troque de trilha quando muda o clima, com fade de 20–60 frames. Silêncio só como pausa dramática (0,5 a 3 s).
+- **Efeito sonoro em todo evento visual importante:**
+  - papel entra: `papel-deslizar`; documento abre: `papel-virar`;
+  - carimbo: `carimbo`; número ou etiqueta: `clique`; número subindo: `subida`;
+  - moeda ou dinheiro: `moedas`; transição: `whoosh`; foto: `flash-camera`;
+  - relógio ou espera: `relogio-tique` / `tique-parede`; revelação: `riser` → silêncio → `impacto`.
+  - Referência: pelo menos 1 efeito a cada fala com elemento novo, em média 8 a 15 por minuto. Em bloco de comoção, menos: só piano e violoncelo.
+- **Ambiência** quando o lugar pede: `sala-espera`, `chuva-distante`, `murmurio-multidao`, `feira-ambiencia`, `passos-corredor`, com volume 0.10 a 0.15.
+- **Som-assinatura** do tema (batimento no SUS, ding de senha no SUAS): nos momentos humanos, 1 a 2 vezes por cena, nunca sob dado de orçamento.
+
+## 4. Adaptar à emoção de cada trecho
+
+| Emoção | Trilha | Visual | Som |
+|---|---|---|---|
+| **Suspense** | drone grave, pulso (`senha`, `tensao`, `votacao`) | escuro, zoom lento, elemento que surge aos poucos | `tique`, `riser` curto |
+| **Drama / choque** | percussão seca, cordas graves (`veto`, `drama`, `denuncia`) | carimbo, tremor, `Clarao` vermelho | silêncio 1 s → `impacto` |
+| **Comoção** | só piano e violoncelo (`comocao`, `caridade`) | fundo mais escuro, silhuetas, pontos acendendo devagar, sem rosto | nenhum efeito por cima |
+| **Esperança / conquista** | cordas subindo (`constituinte`, `esperanca`, `desfecho`) | luz que acende, linha que sobe, dourado | `subida`, `sting` suave |
+| **Indignação fria** | sintetizador grave, tique (`balanco`) | barras que despencam, contraste vermelho × cinza | `clique` seco |
+| **Didático** | pulso leve, marimba (`rede`, `investigacao`) | fluxos, prédio em andares, mapas com rede | `clique` por item |
+| **Revelação** | pausa da trilha | tela limpa com um número ou frase | `riser` → 0,5–1 s de silêncio → `impacto` |
+
+## 5. Layout preciso (sem quebra de linha e sem vazamento)
+
+- **Texto dentro de caixa com altura fixa (etiqueta, visor, placa, botão) nunca quebra linha.**
+  - Use `whiteSpace: "nowrap"`, com a caixa crescendo junto: `minWidth` + `padding`, não `width` fixo.
+  - Se não couber, **encurte o texto ou diminua a fonte**. Nunca deixe quebrar.
+  - Erro real: "R$ 13,04 BI · SET/2026" quebrou em 2 linhas e saiu da caixa do cartão, aos 0:34 do Bolsa Família.
+- Título e chamada de uma linha: `whiteSpace: "nowrap"` e largura conferida. Encurte em vez de quebrar.
+- Texto de parágrafo (citação, documento) pode quebrar, mas só dentro de uma caixa que cresce com ele, sem altura fixa.
+- **A auditoria confere as duas direções:** TRANSBORDA horizontal e vertical (texto que sai da caixa com fundo pintado), TEXTO_CORTADO, CORTADO e SOB_LEGENDA. Mesmo com 0 problemas, olhe a folha de contato procurando quebra estranha e texto apertado.
+
+## 6. Checklist do bloco (antes do QA)
+
+- [ ] Cada fala tem elemento visual novo ou mudança amarrada a `r(i)`.
+- [ ] Nenhum trecho parado > 6 s (QA sem `PARADO`).
+- [ ] Todo número, lugar, data, lei ou estudo falado aparece na tela.
+- [ ] Transição em cada troca de cena e de bloco, com som casado.
+- [ ] Trilha cobrindo o bloco, trocando conforme a emoção; silêncio só antes de revelação.
+- [ ] Efeito sonoro em cada evento visual importante (em média 8 a 15 por minuto; menos na comoção).
+- [ ] Nenhum texto quebrado em caixa de altura fixa; títulos numa linha.
+- [ ] Legenda oculta nas telas só de texto; nada sob a legenda.
+- [ ] `qa-quadros.mjs` com 0 problemas + folha de contato olhada.
