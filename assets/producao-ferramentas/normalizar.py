@@ -46,7 +46,9 @@ for raw in sorted(glob.glob(os.path.join(pasta, "locucao", "[0-9][0-9]_raw.txt")
         bruto = m.group(0)
         n = int(bruto.replace(".", ""))
         falado = extenso(n)
-        pares[falado] = bruto
+        # só números grandes (anos, milhares) viram par para a legenda: um par como "setenta" -> "70" trocaria também
+        # o meio de "cento e setenta e cinco" (bug visto em Terras Raras)
+        if n >= 1000: pares[falado] = bruto
         return falado
     # inteiros (com ponto de milhar), sem mexer em números colados a letras
     txt = re.sub(r"(?<![\w,])\d{1,3}(?:\.\d{3})+(?!\w|,\d)|(?<![\w,.])\d+(?!\w|[,.]\d)", num, txt)

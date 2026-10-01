@@ -40,7 +40,7 @@ export const TelaFontes: React.FC<{ cfg: ConfigFim }> = ({ cfg }) => {
         <div style={{ opacity: ap(f, 6), fontFamily: F.texto, fontWeight: 500, fontSize: 30, color: p.secundario, whiteSpace: "nowrap" }}>Lista completa, com links, na descrição e no comentário fixado.</div>
         <div data-foco="lista de fontes" style={{ marginTop: 10, backgroundColor: p.cartao, boxShadow: p.sombra, borderRadius: 10, padding: "30px 44px", display: "flex", flexDirection: "column", gap: 10 }}>
           {cfg.fontes.map(([a, b], i) => (
-            <div key={a} style={{ opacity: ap(f, 16 + i * 10), translate: `${(1 - ap(f, 16 + i * 10)) * 24}px 0`, display: "flex", gap: 24, alignItems: "baseline" }}>
+            <div key={a} style={{ opacity: ap(f, 16 + i * 10), translate: `${(1 - ap(f, 16 + i * 10)) * 24}px 0`, display: "flex", gap: 24, alignItems: "baseline", padding: "2px 14px", marginLeft: -14, borderRadius: 8, backgroundColor: f > 16 + cfg.fontes.length * 10 + 10 && Math.floor((f - 16 - cfg.fontes.length * 10) / 36) % cfg.fontes.length === i ? p.destaque + "26" : "transparent" }}>
               <div style={{ width: 560, flexShrink: 0, fontFamily: F.titulo, fontWeight: 800, fontSize: 34, color: p.texto, whiteSpace: "nowrap" }}>{a}</div>
               <div style={{ fontFamily: F.texto, fontWeight: 500, fontSize: 26, color: p.secundario, lineHeight: 1.25 }}>{b}</div>
             </div>
