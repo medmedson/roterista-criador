@@ -26,6 +26,9 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 | SUAS, ~11 min | `O SUS atende todos. O SUAS atende quem precisa.` | misturou idiomas | `O SUS atende todos, e o SUAS atende quem precisa.` |
 | Bolsa Família, 24:40 | `Compra de voto?` (pergunta curta solta) | português estranho | `E a compra de voto?` |
 | Eleições, ~10 min | `…saber se a máquina funcionaria em um país com quase cem milhões de eleitores.` | a voz leu "funcionária" (o substantivo), por causa do acento | trocar o verbo por outro sem ambiguidade: `…saber se a máquina daria conta de um país com quase cem milhões de eleitores.` |
+| SAMU | `Urgência` (Serviço de Atendimento Móvel de Urgência) | a voz lia "urguência" | via `siglas.json`: `"urgência": "urjência"` (a legenda continua "urgência") |
+| SAMU, ~13 min | `A média esconde diferenças.` (frase curta solta) | a voz trocou de idioma | frase longa: `Essa média nacional esconde diferenças importantes de uma região para outra.` |
+| SAMU, ~31 min | `Descreva o que está acontecendo…` (verbo no imperativo abrindo frase) | a voz leu "déscreva" | `Explique o que está acontecendo, de forma clara.` |
 | SUAS | `Funabem` | o usuário ouviu as opções | manter `Funabem` como está (aprovado) |
 | SUS, ~7:26 | `British Medical Journal`, `The Lancet`, `Lancet Public Health` no meio de frase longa | testado em 30/09: o usuário achou atual e proposta boas | nome em inglês é aceitável DENTRO de frase longa em português; em frase curta, evitar |
 
@@ -81,6 +84,10 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 - [ ] INSS e IBGE escritos direto. Butantan como "Butantã". bets como "béts".
 - [ ] Nomes estrangeiros trocados ou dentro de frase longa.
 - [ ] Amostras das aberturas aprovadas pelo usuário quando o vídeo tem sigla ou nome novo.
+
+## Palavras que a voz leu errado e a troca que funcionou
+
+- "funcionaria" lido "funcionária" → "daria conta de"; "descreva" lido "déscreva" → "explique". Na dúvida, troque por sinônimo simples em vez de insistir na grafia.
 
 ## Verbos no condicional que a voz lê como substantivo
 

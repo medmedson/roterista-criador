@@ -15,7 +15,7 @@ APROVADAS = {"IBGE", "INSS", "SUS", "SUAS", "CRAS", "CREAS", "LOAS", "PIB", "BPC
 LETRAS = r"(á|bê|cê|dê|é|éfe|gê|agá|i|jota|cá|éle|ême|ene|ó|pê|quê|érre|ésse|tê|u|vê|xis|zê)"
 SOLETRADA = re.compile(rf"\b{LETRAS}(\s+{LETRAS}){{1,}}\b")
 # Palavras e pedaços típicos de inglês (e francês) que a voz lê no idioma original
-AMBIGUA = re.compile(r"\b(funcionaria|secretaria|auxiliaria|ministraria)\b", re.I)  # condicional que a voz lê como substantivo ("funcionária")
+AMBIGUA = re.compile(r"\b(funcionaria|auxiliaria|ministraria|descreva)\b", re.I)  # condicional que a voz lê como substantivo ("funcionária")
 INGLES = re.compile(r"\b(the|of|and|with|journal|health|public|medical|review|report|world|bank|lancet|nature|science|online|app|delivery|fake|news|streaming|bet|bets|site|web|link|email|software|hardware|design|marketing|ranking|boom|lobby|impeachment|show|games?|free)\b", re.I)
 MARCA_INGLES = re.compile(r"\b\w*(th|sh|ck|oo|ee|ght|tion|ing|w|y|k)\w*\b", re.I)
 # Palavras portuguesas comuns que batem nos padrões acima (não são aviso)
