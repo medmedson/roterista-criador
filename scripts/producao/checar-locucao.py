@@ -15,6 +15,7 @@ APROVADAS = {"IBGE", "INSS", "SUS", "SUAS", "CRAS", "CREAS", "LOAS", "PIB", "BPC
 LETRAS = r"(á|bê|cê|dê|é|éfe|gê|agá|i|jota|cá|éle|ême|ene|ó|pê|quê|érre|ésse|tê|u|vê|xis|zê)"
 SOLETRADA = re.compile(rf"\b{LETRAS}(\s+{LETRAS}){{1,}}\b")
 # Palavras e pedaços típicos de inglês (e francês) que a voz lê no idioma original
+AMBIGUA = re.compile(r"\b(funcionaria|secretaria|auxiliaria|ministraria)\b", re.I)  # condicional que a voz lê como substantivo ("funcionária")
 INGLES = re.compile(r"\b(the|of|and|with|journal|health|public|medical|review|report|world|bank|lancet|nature|science|online|app|delivery|fake|news|streaming|bet|bets|site|web|link|email|software|hardware|design|marketing|ranking|boom|lobby|impeachment|show|games?|free)\b", re.I)
 MARCA_INGLES = re.compile(r"\b\w*(th|sh|ck|oo|ee|ght|tion|ing|w|y|k)\w*\b", re.I)
 # Palavras portuguesas comuns que batem nos padrões acima (não são aviso)
@@ -53,6 +54,8 @@ for a in arqs:
         for m in SOLETRADA.finditer(f):
             ok = re.sub(r"\s+é$", "", m.group(0)) in {"bê pê cê", "ésse tê éfe", "cê gê u", "agá i vê", "cê pê í", "u bê ésse"}
             avisos.append(("MÉDIO" if ok else "ALTO", f"sigla soletrada à mão '{m.group(0)}' em \"{f[:80]}\"", "gerar amostras: sigla direta, nome por extenso ou só o nome (ex.: 'a Legião'); soletrar à mão já falhou com INSS e LBA"))
+        for m in AMBIGUA.finditer(f):
+            avisos.append(("ALTO", f"verbo/substantivo ambíguo '{m.group(0)}' em \"{f[:90]}\"", "a voz já leu 'funcionaria' como 'funcionária'; troque o verbo (ex.: 'daria conta de')"))
         # 4) palavras em inglês/estrangeiras
         for m in INGLES.finditer(f):
             avisos.append(("ALTO", f"palavra estrangeira '{m.group(0)}' em \"{f[:90]}\"", "trocar por equivalente em português ou pôr dentro de frase longa; testar amostra"))

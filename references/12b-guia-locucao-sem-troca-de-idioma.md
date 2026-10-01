@@ -25,6 +25,7 @@ Nos vídeos prontos, o usuário percebeu logo nos primeiros segundos.
 | SUAS | `TCU` soletrado à mão ("tê cê u") | leitura ruim | `TCU` escrito direto |
 | SUAS, ~11 min | `O SUS atende todos. O SUAS atende quem precisa.` | misturou idiomas | `O SUS atende todos, e o SUAS atende quem precisa.` |
 | Bolsa Família, 24:40 | `Compra de voto?` (pergunta curta solta) | português estranho | `E a compra de voto?` |
+| Eleições, ~10 min | `…saber se a máquina funcionaria em um país com quase cem milhões de eleitores.` | a voz leu "funcionária" (o substantivo), por causa do acento | trocar o verbo por outro sem ambiguidade: `…saber se a máquina daria conta de um país com quase cem milhões de eleitores.` |
 | SUAS | `Funabem` | o usuário ouviu as opções | manter `Funabem` como está (aprovado) |
 | SUS, ~7:26 | `British Medical Journal`, `The Lancet`, `Lancet Public Health` no meio de frase longa | testado em 30/09: o usuário achou atual e proposta boas | nome em inglês é aceitável DENTRO de frase longa em português; em frase curta, evitar |
 
@@ -80,3 +81,7 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 - [ ] INSS e IBGE escritos direto. Butantan como "Butantã". bets como "béts".
 - [ ] Nomes estrangeiros trocados ou dentro de frase longa.
 - [ ] Amostras das aberturas aprovadas pelo usuário quando o vídeo tem sigla ou nome novo.
+
+## Verbos no condicional que a voz lê como substantivo
+
+O condicional sem acento escrito ambíguo ("funcionaria", "secretaria", "jornalista"…) pode sair com a sílaba tônica trocada ("funcionária"). Troque o verbo ("daria conta de", "seria capaz de") em vez de insistir na amostra. Ao rever o roteiro, procure: `grep -n -i "funcionaria\|secretaria\|auxiliaria\|ministraria" locucao/*_raw.txt`.
