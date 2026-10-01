@@ -10,7 +10,7 @@ for n in $BLOCOS; do
   out=../render/blocos/bloco$n.mp4
   if [ -f "$out" ]; then echo "bloco $n já existe"; continue; fi
   echo "$(date +%H:%M) renderizando bloco $n"
-  npx remotion render Bloco$n "$out.tmp.mp4" --concurrency=4 --timeout=120000 --log=error
+  npx remotion render Bloco$n "$out.tmp.mp4" --concurrency=4 --timeout=120000 --crf=23 --jpeg-quality=75 --log=error
   mv "$out.tmp.mp4" "$out"
 done
 cd ../render
