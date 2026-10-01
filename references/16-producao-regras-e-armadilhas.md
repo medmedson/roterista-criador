@@ -38,6 +38,7 @@
 | batimento "travando" | amostragem de 3 px presa à tela; pico estreito | grade presa ao tempo, passo de 1 px |
 | voz trocou de sotaque | nome estrangeiro, sigla solta, frase curta de abertura | amostras, equivalente em português, testar em frase |
 | vídeo começa "em outro idioma" | bloco abre com palavras soltas ("Esmola. Preguiça.") | frase introdutória antes da lista ("As acusações são conhecidas: esmola, preguiça…") |
+| render para com `ENOSPC: no space left on device` (react-motion-render…/element-NNNN.jpeg) | cada render grava os quadros em `$TMPDIR/react-motion-render*` (até 1 GB por bloco); render interrompido (kill, erro) deixa a pasta para trás | antes de re-renderizar, apague as pastas `react-motion-render*`, `remotion-v4*-assets*` e `remotion-webpack-bundle-*` **antigas** (data anterior ao render ativo; confira com `ls -ldT`); mantenha 5 GB livres; a junção final agora é numa passada só |
 | "1992 mil e dois" | anos colados com "e" | vírgula (normalizador) |
 | "três mil e quinhentos famílias" | o normalizador escreve números no masculino | substantivo feminino: escrever por extenso no roteiro ("três mil e quinhentas famílias") ou ajustar o NN.txt |
 | disco cheio no render | temporários do Remotion acumulados pelo QA | TMPDIR próprio, bundle apagado, checar df |
