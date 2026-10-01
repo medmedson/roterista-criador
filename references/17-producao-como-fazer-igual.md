@@ -62,7 +62,7 @@ const r = (i: number) => t(i) - inicio;
 **Movimento (o "jeito" das animações):**
 - Entrada: 10–14 frames, `Easing.bezier(0.2, 0.7, 0.2, 1)`, opacidade 0→1 com deslize de 20–60 px ou escala 0,8→1. Saída de cena com `Saida` (fade, chicote, zoom), 10–12 frames.
 - Cascata: itens de uma lista entram um a um, 6 a 12 frames de intervalo, **ou** cada um na palavra em que é dito (`em(i, "trecho")`) — o segundo é o preferido.
-- Nada parado mais de 6 s: a câmera viva é global, mas cada fala ainda precisa de um elemento novo (etiqueta, número, marca-texto, ponto no mapa).
+- Nada parado mais de 6 s: sem zoom de tela (desligado a pedido do usuário); cada fala precisa de um elemento novo (etiqueta, número, marca-texto, ponto no mapa).
 - Composição: conteúdo centralizado **acima** da faixa da legenda (`paddingBottom: 200`), textos a 60 px das bordas, um ponto focal por vez. Tamanhos: títulos 80–110 px, números 110–200 px, rótulos 34–50 px, notas de fonte 22–28 px em mono.
 - Texto em caixa fixa: `whiteSpace: "nowrap"`; se não couber, encurte.
 - Todo elemento importante com `data-foco="nome"`; tela só de texto com `data-cobre data-pausa-ok` quando é pausa proposital.

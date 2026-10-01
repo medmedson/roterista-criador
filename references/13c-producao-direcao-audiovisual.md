@@ -18,11 +18,10 @@ O usuário quer um **mini documentário vivo**: a tela muda o tempo todo, o som 
   - Uma coisa acende quando é citada, o número conta enquanto é dito, o ponto do mapa pulsa no nome da cidade, o contador troca na virada da frase.
   - Use `r(i)` (início da fala i) para amarrar cada entrada à palavra certa.
   - Evite animação que roda sozinha sem relação com o que a voz diz.
-- **Câmera viva (já ligada em todo bloco):** o `auditado()` envolve cada bloco em `CameraViva` (`componentes/CameraViva.tsx`): zoom que respira entre 1,015 e 1,045 e deslize lento de até 10 px, contínuo no vídeo inteiro. Legenda, película e chamada de inscrição ficam fixas com `DesfazCamera`.
-  - Motivo: os primeiros vídeos tinham cerca de 90 trechos de 6 a 12 s de imagem parada cada um; o usuário pediu "mais vida nos trechos ociosos de imagens".
-  - Não desligue. Camada nova que precise ficar fixa na tela vai dentro de `DesfazCamera`.
-  - O auditor mede `CORTADO` no quadro sem câmera (o corte leve das bordas é proposital), mas acusa `TEXTO_CORTADO` se um texto encostar na borda real. Deixe 45 px de folga para texto.
-  - A câmera é o piso, não o teto: cada fala ainda precisa de elemento novo.
+- **Zoom de tela (CameraViva): DESLIGADO por padrão** (pedido do usuário, 01/10/2026). O zoom lento de 1,5% ficou com aparência de "quadro a quadro" no vídeo: o texto se realinha ao pixel a cada quadro. Os vídeos que já saíram com ele (Eleições, SAMU, Bolsa Família) ficam como estão; os novos (SUAS, SUS, Terras Raras em diante) saem sem. `componentes/CameraViva.tsx` tem `CAMERA_ATIVA = false`.
+  - Não religue sem testar um trecho de 10 s em tela cheia e aprovar com o usuário.
+  - Para a tela não ficar parada, use movimento **dentro** das cenas: contador que conta, itens entrando um a um, marca-texto que avança, ponto de mapa que pulsa, linha que se desenha. Isso é o que o QA `PARADO` cobra.
+  - `Drift` (zoom/deslize de um elemento específico, como documento ou mapa) pode ser usado com parcimônia e só se o teste de fluidez passar.
 - **Movimento de fundo:** em cena longa, use `Poeira`, grão da `Pelicula`, drift lento da câmera (`Camera`/`enquadra`) ou luz que varia (`Luzes`), para a tela nunca congelar.
 
 ## 2. Transições (entre cenas e entre blocos)

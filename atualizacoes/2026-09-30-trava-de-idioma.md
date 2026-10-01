@@ -246,3 +246,7 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 - **Fim padrão** (`componentes/FimDoVideo.tsx`, `13c` seção 4c, `07-tela-final-e-creditos.md`): FONTES → tela final com créditos e aviso de voz sintética → chamada 3 por cima → som-assinatura → silêncio → fade.
 - **Guia novo `17-producao-como-fazer-igual.md`:** leitura fluida, método de animação, interações com a fala, busca de imagens na web, entrega.
 - `render-final.sh` com `--timeout=120000`; `gerar-audio.sh` repete a voz até 3 vezes.
+
+## Zoom de tela desligado (01/10/2026)
+- O zoom lento (`CameraViva`) parecia "quadro a quadro" no vídeo. Agora `CAMERA_ATIVA = false` no template. Eleições, SAMU e Bolsa Família ficam como saíram; SUAS, SUS e Terras Raras saem sem zoom.
+- A auditoria PARADO continua valendo: resolva com movimento dentro das cenas.

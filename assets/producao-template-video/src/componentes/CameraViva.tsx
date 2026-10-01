@@ -5,6 +5,10 @@ import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 // para nenhuma imagem ficar parada (regra: nada parado > 6 s). Aplicada pelo auditado() em todo bloco.
 // Legenda e película ficam fixas (DesfazCamera aplica a transformação inversa exata).
 // Escala mínima 1.015 cobre o deslize máximo, então nunca aparece borda.
+// DESLIGADA por padrão (pedido do usuário, 01/10/2026): o zoom lento ficou com aparência de "quadro a quadro" no render
+// (o texto se realinha ao pixel a cada quadro). Vídeos que já saíram com ele (Eleições, SAMU, Bolsa Família) ficam como estão.
+// Para o vídeo não ficar parado, use movimento DENTRO das cenas (contadores, entradas, marca-texto), não zoom de tela.
+export const CAMERA_ATIVA = false;
 type Cam = { s: number; tx: number; ty: number };
 const PARADA: Cam = { s: 1, tx: 0, ty: 0 };
 const Ctx = createContext<Cam>(PARADA);
@@ -25,6 +29,7 @@ export const CameraViva: React.FC<{ children: React.ReactNode }> = ({ children }
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const c = camera(frame, fps);
+  if (!CAMERA_ATIVA) return <>{children}</>;
   return (
     <Ctx.Provider value={c}>
       <AbsoluteFill data-camera={`${c.s},${c.tx},${c.ty}`} style={{ transform: estilo(c), transformOrigin: "50% 50%" }}>{children}</AbsoluteFill>
