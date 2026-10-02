@@ -125,3 +125,13 @@ Siga `07-tela-final-e-creditos.md` (conteúdo) e `13c`, seção 4c (montagem com
 - Vídeo **único e completo** por tema (nunca Parte 1/Parte 2).
 - `render/<tema>-documentario-final.mp4`, `render/thumbnail.png`, `render/descricao-youtube.txt` (com título, capítulos reais, tags e comentário fixado), `render/fontes-completas.txt`.
 - Conferir com `ffprobe` e avisar o caminho do arquivo. Sem prévia 720p.
+
+---
+
+## 7. Reels e cortes verticais (redes sociais)
+
+Pedido do usuário (02/10/2026): cortes de 45 a 90 s de cada vídeo para Reels/Shorts, em 1080×1920.
+- **Escolha dos trechos:** parta da lista "Cortes curtos derivados" do roteiro (5 por vídeo) e some 1 ou 2 se houver trecho forte. Cada corte começa no início de uma fala e termina no fim de outra, entende-se sozinho, e mantém a neutralidade e as ressalvas do original (crítica + resposta, projeção marcada, "não localizado").
+- **Pipeline:** (1) escreva `reels.json` com `{"bloco","de","ate","titulo","sub"}` (índices de falas do `cues.json`); (2) `python scripts/producao/gerar-reels.py <projeto> reels.json` corta os clipes do vídeo final e grava `src/data/reels.json`; (3) copie `src/cenas/Reel.tsx` do template e registre `Reel1..N` no `Root.tsx` (1080×1920, `duracaoReel(i)`); (4) `npx remotion render ReelN ~/Downloads/<tema>-reels/NN-<titulo>.mp4 --crf=23`.
+- **Layout:** título e linha de contexto no topo; clipe (sem a legenda queimada, recortada) no meio; **legenda dinâmica grande** (trechos de até 2 linhas, no tempo da fala); rodapé "VÍDEO COMPLETO NO CANAL · CONTRA PROVA BRASIL"; barra de progresso fina no topo.
+- Entregar em `~/Downloads/<tema>-reels/` com nomes `NN-titulo.mp4` e uma lista de títulos/descrições curtas para postar.
