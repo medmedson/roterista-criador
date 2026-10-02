@@ -1,6 +1,6 @@
 # Corta REELS verticais (1080x1920) do vídeo final: prepara os clipes e os dados de legenda; o render é feito pelo Remotion (Reel1..N).
 # Uso: python gerar-reels.py <pasta-do-projeto> <reels.json>
-#   reels.json = [{"bloco":"05","de":0,"ate":8,"titulo":"A ELEIÇÃO ANULADA","sub":"e o nascimento da urna"}, ...]
+#   reels.json = [{"bloco":"05","de":0,"ate":8,"titulo":"A ELEIÇÃO ANULADA","sub":"e o nascimento da urna","completo":"ELEIÇÕES NO BRASIL"}, ...]  ("completo" = nome do vídeo completo no cartão final)
 #   "de"/"ate" = índices das falas (cues.json) do bloco: começa no início da fala "de" e termina no fim da fala "ate".
 # Faz: tempo exato do início de cada bloco (soma das durações de render/blocos/blocoNN.mp4), pré-roll (const OFF no BlocoNN.tsx) e
 #      chamada "antes" (comChamada(..., "antes") no Root.tsx = 250 quadros antes das falas do bloco), corta o trecho do vídeo final
@@ -27,6 +27,10 @@ def chamada_antes(n):
     if not m: return 0.0
     return 250 / 30  # DURACAO_CHAMADA padrão dos vídeos antigos
 os.makedirs(os.path.join(V, "public/reels"), exist_ok=True)
+os.makedirs(os.path.join(V, "public/marca"), exist_ok=True)
+import shutil
+for arq in ("logo-cp-brasil.png", "cta-reel.mp3"):  # logo do canal e voz "Assista ao vídeo completo no canal Contra Prova Brasil."
+    shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../assets/marca", arq), os.path.join(V, "public/marca", arq))
 saida = []
 for k, r in enumerate(json.load(open(cfg)), 1):
     n = r["bloco"]; cs = cues[n][r["de"]:r["ate"] + 1]
@@ -34,6 +38,6 @@ for k, r in enumerate(json.load(open(cfg)), 1):
     ini = max(0, base + cs[0]["de"] / 1000 - 0.2); fim = base + cs[-1]["ate"] / 1000 + 0.35
     caps = [{"de": round((c["de"] - cs[0]["de"]) / 1000 + 0.2, 3), "ate": round((c["ate"] - cs[0]["de"]) / 1000 + 0.2, 3), "texto": c["texto"]} for c in cs]
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{ini:.3f}", "-i", final, "-t", f"{fim - ini:.3f}", "-vf", "crop=1920:880:0:0,scale=1280:-2", "-c:v", "libx264", "-crf", "22", "-preset", "veryfast", "-c:a", "aac", "-b:a", "160k", os.path.join(V, f"public/reels/r{k}.mp4")], check=True)
-    saida.append({"id": k, "titulo": r["titulo"], "sub": r["sub"], "duracao": round(fim - ini, 3), "caps": caps})
+    saida.append({"id": k, "titulo": r["titulo"], "sub": r["sub"], "completo": r.get("completo", ""), "duracao": round(fim - ini, 3), "caps": caps})
     print(k, r["titulo"], round(fim - ini, 1), "s", f"{int(ini // 60)}:{ini % 60:04.1f}")
 json.dump(saida, open(os.path.join(V, "src/data/reels.json"), "w"), ensure_ascii=False, indent=1)
