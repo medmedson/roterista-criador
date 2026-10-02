@@ -11,7 +11,7 @@ a = int(sys.argv[3]) if len(sys.argv) > 3 else 1
 z = int(sys.argv[4]) if len(sys.argv) > 4 else n
 root_p = os.path.join(V, "src/Root.tsx")
 s = open(root_p).read()
-if "Reel1" not in s:
+if "cenas/Reel" not in s:
     imps = list(re.finditer(r"^import .*;$", s, re.M))
     ult = imps[-1].end()
     s = s[:ult] + '\nimport { duracaoReel, Reel } from "./cenas/Reel";' + s[ult:]

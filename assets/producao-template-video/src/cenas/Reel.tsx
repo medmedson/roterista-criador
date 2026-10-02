@@ -107,7 +107,7 @@ export const Reel: React.FC<{ i: number }> = ({ i }) => {
             <OffthreadVideo src={staticFile(`reels/r${r.id}.mp4`)} style={{ width: 1000, height: 440, objectFit: "cover", objectPosition: "center top" }} volume={(q) => Math.min(1, Math.max(0, (fimClipe - q) / 12))} />
           </div>
           {/* legenda dinâmica */}
-          <div style={{ position: "absolute", left: 40, width: 900, top: 1030, height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ position: "absolute", left: 90, width: 900, top: 1030, height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
             {cap ? (
               <div data-legenda style={{ backgroundColor: LEGENDA_FUNDO, color: "#FFFFFF", fontFamily: fontes.texto, fontWeight: 800, fontSize: 64, lineHeight: 1.16, textAlign: "center", padding: "22px 30px", borderRadius: 18, maxWidth: 900 }}>
                 {trecho(cap.texto, cap.de, cap.ate, t)}
@@ -115,16 +115,16 @@ export const Reel: React.FC<{ i: number }> = ({ i }) => {
             ) : null}
           </div>
           {/* chamada: logo + nome do canal + símbolo do YouTube (acima da zona do Instagram) */}
-          <div style={{ position: "absolute", left: 40, width: 900, top: 1290, height: 220, display: "flex", alignItems: "center", gap: 26, padding: "0 30px", borderRadius: 26, backgroundColor: c.branco, boxShadow: sombra, borderLeft: `14px solid ${c.verde}` }}>
+          <div style={{ position: "absolute", left: 110, width: 860, top: 1290, height: 220, display: "flex", alignItems: "center", gap: 22, padding: "0 28px", borderRadius: 26, backgroundColor: c.branco, boxShadow: sombra, borderLeft: `14px solid ${c.verde}` }}>
             <div style={{ width: 150, height: 150, borderRadius: 75, overflow: "hidden", flexShrink: 0, boxShadow: "0 0 0 6px rgba(255,255,255,0.18), 0 12px 30px rgba(0,0,0,0.45)", scale: String(1 + 0.025 * Math.sin(f / 12)) }}>
               <Img src={staticFile("marca/logo-cp-brasil.png")} style={{ width: 150, height: 150 }} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, minWidth: 0 }}>
-              <div style={{ fontFamily: fontes.titulo, fontWeight: 900, fontSize: 58, lineHeight: 0.95, color: c.tinta, whiteSpace: "nowrap" }}>CONTRA PROVA BRASIL</div>
+              <div style={{ fontFamily: fontes.titulo, fontWeight: 900, fontSize: 52, lineHeight: 0.95, color: c.tinta, whiteSpace: "nowrap" }}>CONTRA PROVA BRASIL</div>
               <div style={{ fontFamily: fontes.mono, fontWeight: 600, fontSize: 22, letterSpacing: 2, color: c.cinza, whiteSpace: "nowrap" }}>VÍDEO COMPLETO NO CANAL</div>
             </div>
             <div style={{ marginLeft: "auto" }}>
-              <IconeYouTube largura={104} pulso={Math.sin(f / 9)} />
+              <IconeYouTube largura={96} pulso={Math.sin(f / 9)} />
             </div>
           </div>
         </AbsoluteFill>
