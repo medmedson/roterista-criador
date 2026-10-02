@@ -143,6 +143,15 @@ BlocoNN: auditado(comFim(BlocoNN, DURACAO_NN, FIM)),
 - Texto de parágrafo (citação, documento) pode quebrar, mas só dentro de uma caixa que cresce com ele, sem altura fixa.
 - **A auditoria confere as duas direções:** TRANSBORDA horizontal e vertical (texto que sai da caixa com fundo pintado), TEXTO_CORTADO, CORTADO e SOB_LEGENDA. Mesmo com 0 problemas, olhe a folha de contato procurando quebra estranha e texto apertado.
 
+## 5b. Legenda dinâmica (obrigatória, regra do usuário de 02/10/2026)
+
+**A legenda nunca mostra a fala inteira de uma vez.** Vídeos antigos exibiam falas de 4 a 6 linhas paradas durante toda a fala, com o texto à frente da voz. Isso é erro.
+- O componente `Legenda` do template já faz isso: divide cada fala em **trechos de no máximo 2 linhas** (~84 caracteres, de preferência cortando em pontuação) e mostra cada trecho **no momento em que é dito**, em proporção ao tamanho do trecho dentro da duração da fala. Fala curta aparece inteira.
+- Use sempre o `Legenda` do template (`dividirLegenda`, `MAX_CARACTERES = 84`); ao restilizar para outro tema, mude só cores e fundo, nunca a lógica de divisão.
+- Com no máximo 2 linhas, a legenda sobe pouco (≈ y 920): os elementos podem ocupar a tela até ~ y 900, mas continue reservando uns 200 px embaixo em cenas com legenda.
+- A auditoria (`SOB_LEGENDA`) continua valendo.
+- Vale para os próximos vídeos. Os já entregues (Eleições, SAMU, Terras Raras, SUS, SUAS, Bolsa Família) ficam como estão, salvo pedido.
+
 ## 6. Checklist do bloco (antes do QA)
 
 - [ ] Cada fala tem elemento visual novo ou mudança amarrada a `r(i)`.
@@ -152,7 +161,7 @@ BlocoNN: auditado(comFim(BlocoNN, DURACAO_NN, FIM)),
 - [ ] Trilha cobrindo o bloco, trocando conforme a emoção; silêncio só antes de revelação.
 - [ ] Efeito sonoro em cada evento visual importante (em média 8 a 15 por minuto; menos na comoção).
 - [ ] Nenhum texto quebrado em caixa de altura fixa; títulos numa linha.
-- [ ] Legenda oculta nas telas só de texto; nada sob a legenda.
+- [ ] Legenda oculta nas telas só de texto; nada sob a legenda; legenda dinâmica (trechos de até 2 linhas, no tempo da fala).
 - [ ] Trilha só por `Trilha` (ducking automático; `atrasoVoz` se houver pré-roll).
 - [ ] Chamada de inscrição nos 3 momentos do vídeo (fim do bloco 1, meio, fim).
 - [ ] Fim do vídeo no padrão (FONTES → tela final com créditos e aviso → chamada 3 → assinatura → fade) via `FimDoVideo.tsx`.

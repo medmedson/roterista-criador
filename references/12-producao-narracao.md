@@ -53,6 +53,8 @@ O edge-tts não aceita SSML de pausa. O que funciona é "…" depois da frase:
 
 ## Legendas
 
+**Legenda dinâmica (regra do usuário, 02/10/2026):** cada fala é mostrada em trechos de no máximo 2 linhas, cada um no momento em que é dito. Nunca a fala inteira de uma vez. Ver `13c`, seção 5b, e `componentes/Legenda.tsx`.
+
 O `edge-tts --write-subtitles` gera um `.srt` por bloco. O `gerar-dados.mjs` transforma em `src/data/cues.json`: `{ "01": [{ de, ate, texto }] }`, com tempo em ms.
 
 As cenas usam `t(i) = ms(C[i].de)`, o frame em que começa a fala i. A partição das falas pode mudar quando o áudio é regenerado:

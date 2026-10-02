@@ -250,3 +250,7 @@ Rode com `FORCAR=1` só depois da aprovação do usuário. Assim o erro de fala 
 ## Zoom de tela desligado (01/10/2026)
 - O zoom lento (`CameraViva`) parecia "quadro a quadro" no vídeo. Agora `CAMERA_ATIVA = false` no template. Eleições, SAMU e Bolsa Família ficam como saíram; SUAS, SUS e Terras Raras saem sem zoom.
 - A auditoria PARADO continua valendo: resolva com movimento dentro das cenas.
+
+## Legenda dinâmica (02/10/2026)
+- `Legenda.tsx` do template agora divide cada fala em trechos de até 2 linhas e mostra cada trecho no tempo em que é dito. Antes, falas de 4 a 6 linhas ficavam paradas na tela durante toda a fala (erro apontado pelo usuário).
+- Atualizar projetos antigos: copiar `Legenda.tsx` do template e reaplicar só as cores do tema.
