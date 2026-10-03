@@ -6,7 +6,7 @@ O usuário quer um **mini documentário vivo**: a tela muda o tempo todo, o som 
 
 - **Toda fala tem um visual próprio.** Cada fala do `.srt` entra na tela como pelo menos um elemento novo ou uma mudança visível: número que conta, barra que cresce, ponto que acende, mapa que ganha rota, etiqueta que entra, câmera que se move. Nunca deixe duas falas seguidas com a mesma tela parada.
 - **Nada fica parado mais de 6 s.** O `qa-quadros.mjs` aponta `PARADO` quando a tela passa de 6 s sem mudança visível.
-  - Documento e citação podem segurar de 3 a 6 s, mas com movimento lento: deslize lateral (sem zoom: regra de 01/10/2026) deslize de 20–40 px, ou marca-texto que avança.
+  - Documento e citação podem segurar de 3 a 6 s, mas com movimento lento: deslize lateral de 20–40 px (sem zoom, regra de 01/10/2026), ou marca-texto que avança.
   - Depois de um número animado, segure 2 a 3 s e já entre o próximo elemento.
 - **Informação visual sempre que puder.** Todo número falado aparece na tela:
   - como contador, barra, série, pizza ou pontos (1 ponto = N pessoas);
