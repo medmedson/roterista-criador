@@ -133,6 +133,7 @@ Cada bloco do roteiro traz, além da locução:
 Tudo por código e gratuito: edge-tts (voz Remy) → Remotion (React) → ffmpeg; trilhas/efeitos por síntese numpy; fotos só Commons com licença conferida. Ler na ordem:
 
 - `references/17-producao-como-fazer-igual.md` — **ler primeiro**: o jeito exato de trabalhar — texto para leitura fluida e natural, método das animações (tempos presos à voz, `em(i, trecho)`, movimento, ciclo de QA), interações (a tela reage à fala), pesquisa de imagens na web com licença, entrega. Vídeo sempre único e completo por tema.
+- `references/18-producao-motion-regras.md` — regras de movimento (durações em frames, curvas `Easing.bezier`, stagger ≤ 15 frames, pausa antes do clímax, transição "cortar a curva", sem quique) destiladas da LottieFiles motion-design-skill e do HyperFrames; constantes em `componentes/Movimento.ts`. Ler ao criar kits e cenas novas.
 - `references/10-producao-visao-geral.md` — pastas, sequência completa de comandos, ordem de trabalho com o usuário.
 - `references/11-producao-setup.md` — ferramentas e versões testadas, instalação em máquina nova, disco, CPU, caffeinate.
 - `references/12b-guia-locucao-sem-troca-de-idioma.md` — **obrigatório para roteiro e produção**: como escrever e gerar a locução sem a voz trocar de idioma (casos reais e checklist).

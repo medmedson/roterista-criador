@@ -29,6 +29,6 @@ for r in reels[a - 1:z]:
     out = os.path.join(saida, f"{r['id']:02d}-{slug(r['titulo'])}.mp4")
     if os.path.exists(out): print("já existe", out); continue
     for t in (1, 2, 3):
-        ok = subprocess.run(["npx", "remotion", "render", f"Reel{r['id']}", out + ".tmp.mp4", "--concurrency=4", "--crf=23", "--jpeg-quality=80", "--timeout=120000", "--log=error"], cwd=V).returncode == 0
+        ok = subprocess.run(["npx", "remotion", "render", f"Reel{r['id']}", out + ".tmp.mp4", "--concurrency=2", "--crf=23", "--jpeg-quality=80", "--timeout=240000", "--offthreadvideo-cache-size-in-bytes=536870912", "--log=error"], cwd=V).returncode == 0
         if ok: os.replace(out + ".tmp.mp4", out); print("pronto", out); break
         print("falhou, tentativa", t)
