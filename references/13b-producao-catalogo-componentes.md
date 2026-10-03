@@ -256,7 +256,7 @@ Cada linha: componente → props. Leia o arquivo .tsx antes de usar um component
   `{ x: number; y: number; entra: number }`
 
 ## Saida.tsx
-- **Saida** — "zoom": atravessa a tela (zoom-through); "chicote": desliza rápido para o lado; "fade": fusão; "sepia": vira sépia
+- **Saida** — "zoom": atravessa a tela (zoom-through) — **não usar em vídeo novo** (regra sem zoom); "chicote": desliza rápido para o lado; "fade": fusão; "sepia": vira sépia
   `{ duracao: number; tipo: "zoom" | "chicote" | "fade" | "sepia"; frames?: number; children: React.ReactNode }`
 
 ## Serie.tsx

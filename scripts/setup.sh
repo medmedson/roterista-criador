@@ -19,6 +19,8 @@ echo "== Dependências Node da marca (opentype.js)"
 echo "== Python: venv com edge-tts e numpy (narração e trilhas)"
 if [ ! -d "$RAIZ/.venv" ]; then python3 -m venv "$RAIZ/.venv"; fi
 "$RAIZ/.venv/bin/pip" install --quiet edge-tts numpy pillow && ok ".venv com edge-tts, numpy e pillow"
+# skills de apoio empacotadas (texto puro, sem rede): motion design da LottieFiles (MIT)
+for d in "$SKILL"/assets/skills-apoio/*/; do n=$(basename "$d"); [ -d "$HOME/.claude/skills/$n" ] || cp -R "$d" "$HOME/.claude/skills/$n"; done && ok "skills de apoio instaladas em ~/.claude/skills"
 echo "== Manter a tela ligada em tarefas longas (render, pesquisa): caffeinate -dimsu -t 86400 &"
 echo "   Nunca use 'pkill caffeinate': pode matar o de outra sessão."
 echo "== Pronto. Próximo passo: ler $SKILL/SKILL.md e references/00-visao-geral.md"

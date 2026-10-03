@@ -73,10 +73,10 @@ Regras: mesma trilha nunca abre dois blocos seguidos; comoção = piano+cordas, 
 - Fechamento: último bloco responde o título e as perguntas da abertura, faz balanço (funciona / falha / em disputa) e termina numa frase conclusiva, sem pergunta aberta.
 
 ## Decupagem (como a produção lê)
-- `ESTÁTICO` (leitura: documento, citação, número-chave; segurar 3–6 s, só drift/zoom lento) × `ANIMADO` (dados, mapas, contadores, rotas). Alvo ~40/60; sem duas estáticas longas seguidas; número animado termina com hold estático de 2–3 s; nunca animar sobre texto que precisa ser lido.
+- `ESTÁTICO` (leitura: documento, citação, número-chave; segurar 3–6 s, só deriva lateral lenta ou máscara, sem zoom) × `ANIMADO` (dados, mapas, contadores, rotas). Alvo ~40/60; sem duas estáticas longas seguidas; número animado termina com hold estático de 2–3 s; nunca animar sobre texto que precisa ser lido.
 - Cena só de texto (cartela, citação, documento, número sozinho, pergunta, tela final) = **SEM LEGENDA**.
 - Carimbos: 1–2 por bloco, só em revelação, nunca sobre texto. Drama (tremor + clarão + impacto grave) só em revelações grandes.
-- Transições com sentido: corte seco (choque), fusão lenta (tempo/luto), whip/whoosh (assunto), match cut, zoom-through (entrar em documento), flash (drama), fade a preto (fim de capítulo), página virando (abertura de capítulo), glitch (dado/tecnologia); 8–15 frames; SFX casado; não repetir o mesmo tipo mais de 2 vezes seguidas.
+- Transições com sentido: corte seco (choque), fusão lenta (tempo/luto), whip/whoosh (assunto), match cut, "cortar a curva" (padrão dentro do bloco; sem zoom-through), flash (drama), fade a preto (fim de capítulo), página virando (abertura de capítulo), glitch (dado/tecnologia); 8–15 frames; SFX casado; não repetir o mesmo tipo mais de 2 vezes seguidas.
 - Som: trilha muda de clima por bloco; nível sob a voz −18 a −24 dB; silêncio curto como recurso; batida/som-assinatura ligados ao motivo; comoção sem efeitos por cima.
 - Etiquetas de tela curtas (~25 caracteres por linha); texto longo estoura a coluna.
 - Nada cortado pela borda sem ser proposital; nada sob a legenda; nada sobreposto; nunca tela vazia.

@@ -6,7 +6,7 @@ O usuário quer um **mini documentário vivo**: a tela muda o tempo todo, o som 
 
 - **Toda fala tem um visual próprio.** Cada fala do `.srt` entra na tela como pelo menos um elemento novo ou uma mudança visível: número que conta, barra que cresce, ponto que acende, mapa que ganha rota, etiqueta que entra, câmera que se move. Nunca deixe duas falas seguidas com a mesma tela parada.
 - **Nada fica parado mais de 6 s.** O `qa-quadros.mjs` aponta `PARADO` quando a tela passa de 6 s sem mudança visível.
-  - Documento e citação podem segurar de 3 a 6 s, mas com movimento lento: zoom de 1,00 → 1,06, deslize de 20–40 px, ou marca-texto que avança.
+  - Documento e citação podem segurar de 3 a 6 s, mas com movimento lento: deslize lateral (sem zoom: regra de 01/10/2026) deslize de 20–40 px, ou marca-texto que avança.
   - Depois de um número animado, segure 2 a 3 s e já entre o próximo elemento.
 - **Informação visual sempre que puder.** Todo número falado aparece na tela:
   - como contador, barra, série, pizza ou pontos (1 ponto = N pessoas);
@@ -33,7 +33,7 @@ Escolha pelo sentido narrativo e case sempre com um efeito sonoro:
 | corte seco | choque, revelação, mudança brusca | troca de `Sequence` | `impacto` ou silêncio |
 | fusão / fade | passagem de tempo, luto, reflexão | `Saida tipo="fade"` (10–24 frames) | trilha continua |
 | chicote | mudança rápida de assunto | `Saida tipo="chicote"` (8–12 frames) | `whoosh` |
-| zoom-through | entrar num documento ou objeto | `Saida tipo="zoom"` | `whoosh` |
+| ~~zoom-through~~ | **proibido** (sem zoom de tela); usar "cortar a curva" (`cortarCurva()` em `Movimento.ts`) ou wipe de máscara | — | `whoosh` |
 | sépia | ida ao passado | `Saida tipo="sepia"` ou filtro no `Fundo` | `papel-virar` |
 | flash | drama, virada | `Clarao` (branco ou vermelho) + tremor do `Fundo` | `impacto` + `sting` |
 | preto + cartela | fim de capítulo | preto (`data-pausa-ok`) + cartela "CAPÍTULO N" (nunca "ATO") | `sting` |
@@ -63,7 +63,7 @@ Não repita o mesmo tipo mais de 2 vezes seguidas. Toda troca de bloco tem trans
 
 | Emoção | Trilha | Visual | Som |
 |---|---|---|---|
-| **Suspense** | drone grave, pulso (`senha`, `tensao`, `votacao`) | escuro, zoom lento, elemento que surge aos poucos | `tique`, `riser` curto |
+| **Suspense** | drone grave, pulso (`senha`, `tensao`, `votacao`) | escuro, deriva lateral lenta, elemento que surge aos poucos | `tique`, `riser` curto |
 | **Drama / choque** | percussão seca, cordas graves (`veto`, `drama`, `denuncia`) | carimbo, tremor, `Clarao` vermelho | silêncio 1 s → `impacto` |
 | **Comoção** | só piano e violoncelo (`comocao`, `caridade`) | fundo mais escuro, silhuetas, pontos acendendo devagar, sem rosto | nenhum efeito por cima |
 | **Esperança / conquista** | cordas subindo (`constituinte`, `esperanca`, `desfecho`) | luz que acende, linha que sobe, dourado | `subida`, `sting` suave |
