@@ -26,7 +26,7 @@ export const Contador: React.FC<{
         {n}
         {sufixo}
       </div>
-      <div style={{ fontFamily: fontes.maquina, fontSize: 44, color: cores.papel, textAlign: "center", maxWidth: 900 }}>{rotulo}</div>
+      <div style={{ fontFamily: fontes.maquina, fontSize: 44, color: cores.branco, textAlign: "center", maxWidth: 900 }}>{rotulo}</div>
     </div>
   );
 };

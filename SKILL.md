@@ -35,6 +35,7 @@ Ele confere Node, Python, ffmpeg, Chrome, instala `marca/` (gerador de capas + f
 | `references/05-publicacao.md` | título, descrição, capítulos reais, tags, comentário fixado |
 | `references/06-handoff-producao.md` | mensagem à sessão de produção e resumo do pipeline |
 | `references/07-tela-final-e-creditos.md` | **padrão do fim do vídeo**: tela de fontes, tela final, créditos de imagens, aviso de voz sintética, chamada 3, descrição |
+| `references/08-capas-clickbait-e-reels.md` | **capas clickbait** (YouTube 1280×720) e **capas de reels** (1080×1920, capítulo N de 10), gerador por código, zonas seguras do Instagram, identidade por tema |
 | `references/producao-exemplos/` | exemplos de componentes Remotion (mantidos pela sessão de produção) |
 | `scripts/` | `setup.sh`, `render-svg.sh`, `checar-fontes.sh` |
 | `assets/` | `marca/` (fontes e geradores), `producao-ferramentas/` (Python) |
