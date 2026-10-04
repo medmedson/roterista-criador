@@ -68,3 +68,12 @@ Rode `bash gerar-audio.sh <canal> <tema> 04 07`. Depois:
 1. rode o QA desses blocos;
 2. apague `render/blocos/blocoNN.mp4` dos afetados;
 3. rode o `render-final.sh`.
+
+## Perfis de voz salvos (04/10/2026)
+
+Pedido do usuário: guardar todas as configurações de voz já usadas antes de criar o estilo novo.
+
+| Perfil | Voz | Ajustes | Texto |
+|---|---|---|---|
+| Documentário (padrão) | `fr-FR-RemyMultilingualNeural` | `--rate=-5%`; comoção: `VOZ_EXTRA_NN="--rate=-12% --volume=-10%"`; chamadas -5% | tom jornalístico, frases completas, números por extenso, siglas no `siglas.json`, pronúncias aprovadas (béts, IBGE, Butantã, Kólor, urjência…) |
+| Influencer (vídeos de ~10 min) | mesma Remy | `--rate=+8%` (passar `VOZ_EXTRA_NN="--rate=+8%"` para todos os blocos) | 1ª pessoa, frases curtas e diretas, informativo de criador de conteúdo; as mesmas regras de pronúncia e de trava de idioma valem (ref. 12b) |
