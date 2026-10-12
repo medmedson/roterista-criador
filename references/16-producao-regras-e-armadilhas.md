@@ -50,3 +50,9 @@
 | picos a 0 dB | sem normalização | loudnorm no render-final |
 | descrição > 5.000 caracteres | fontes na descrição | fontes em `fontes-completas.txt` / comentário fixado |
 | `pkill` matou coisa de outra sessão | padrão amplo | nunca `pkill caffeinate`; matar por PID que você mesmo criou |
+
+## edge-tts 403 (12/10/2026)
+- Sintoma: `WSServerHandshakeError: 403` e mp3 de 0 byte; o `gerar-audio.sh` segue e o `gerar-dados.mjs` quebra.
+- Causa: a Microsoft migrou a síntese para `api.msedgeservices.com` (issue rany2/edge-tts#490). A versão 7.2.8 ainda não tem a correção.
+- Correção: `bash scripts/producao/corrigir-edge-tts.sh` (mesma troca do PR #491, lida antes de aplicar). Mesma voz Remy, mesmo áudio.
+- Sempre conferir que os mp3 não têm 0 byte antes de seguir para as cenas.
